@@ -1,0 +1,323 @@
+<html>
+    <head>    
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+        <style>
+            h1 {
+                color: #141414;
+                font-family: 'Popins';
+                font-size: 100px;
+                position: absolute;
+                top: 8%;
+                right: 40%;
+            }
+
+            .TryHackMe{
+                position: absolute;
+                float: left;
+                
+                padding-left: 45px;
+            }
+
+            .LinkedIn{
+                position: absolute;
+                float: left;
+            }
+
+            .Words{
+                font-size: 220%;
+                text-indent: 5%;
+            }
+
+            .Check{
+                text-indent: 5%;
+            }
+
+            img {
+                float: left;
+            }
+
+            /* Navigation Bar */
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    user-select: none;
+                    font-family: 'Poppins', sans-serif;
+                }
+
+                body {
+                    background: #374A67;
+                    overflow: hidden;
+                }
+
+                nav {  /* Nav Bar Position */
+                    position: absolute;
+                    top: 10%;
+                    right: -10%;
+                    transform: translate(-50%, 10%); /* Actual Position (x,y) */
+                }
+                    nav .drop-btn { /* Nav Bar Title*/
+                        width: 400px;
+                        background: #141414;
+                        border-radius: 5px;
+                        line-height: 55px;
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #b0b3b8;
+                        padding: 0 20px; /* Side Spacing */
+                    }
+                    nav .drop-btn span {  /* Drop Down Arrow*/
+                        float: right;
+                        line-height: 50px;
+                        font-size: 28px;
+                        cursor: pointer;
+                    }
+                    nav .tooltip {
+                        position: absolute;
+                        bottom: -20px;
+                        height: 15px;
+                        width: 15px;
+                        background: #141414;;
+                        transform: rotate(45deg);
+                        display: none;
+                    }
+                    nav .tooltip.show {
+                        display: block;
+                    }
+                    nav .wrapper { /* Drop Down Box */
+                        position: absolute;
+                        top: 65px;
+                        display: flex;
+                        width: 400px;
+                        overflow: hidden;
+                        border-radius: 5px;
+                        background: #141414;
+                        display: none;
+                        transition: all 0.3s ease;
+                    }
+                    nav .wrapper.show{
+                        display: block;
+                        display: flex;
+                    }
+
+                .wrapper ul{
+                    width: 400px;
+                    list-style: none;
+                    padding: 10px;
+                    transition: all 0.3s ease;
+                }
+                    .wrapper ul li{
+                        line-height: 55px;
+                    }
+                    .wrapper ul li a{ /* HeaderWords */
+                        position: relative;
+                        color: #b0b3b8;
+                        font-size: 18px;
+                        font-weight: 5px;
+                        padding: 0 10px;
+                        display: flex;
+                        border-radius: 8px;
+                        align-items: center;
+                        text-decoration: none;
+                    }
+                    .wrapper ul li:hover a{
+                        background: #3A3B3C;
+                    }
+
+                ul li a .icon{ /* Icon Circle */
+                    height: 40px;
+                    width: 40px;
+                    margin-left: 13px;
+                    background: #ffffff1a;
+                    display: flex;
+                    justify-content: center;
+                    text-align: center;
+                    border-radius: 50%;
+                }
+                    ul li a .icon span{   /* Icon Images */
+                        line-height: 40px;
+                        font-size: 20px;
+                        color: #b0b3b8;
+                    }
+                    ul li a i{   /* Selection Arrow Spacing */
+                        position: absolute;
+                        left: 5px;
+                        font-size: 25px;
+                        pointer-events: none;
+                    }
+
+                .wrapper ul.setting-drop, .wrapper ul.help-drop{
+                    display: none;
+                }
+                    .wrapper .arrow{   /* Selection Arrow */
+                        padding-left: 10px;
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #b0b3b8;
+                        cursor: pointer;
+                    }
+                    .wrapper .arrow span{
+                        margin-right: 15px;
+                    }
+        </style>
+    </head>
+
+    <body>
+        <h1>About Me </h1>
+
+        <nav>
+            <div class="drop-btn"> Navigation <span class="fas fa-caret-down"></span>
+            </div>
+
+            <div class="tooltip">
+            </div>
+
+            <div class="wrapper">
+
+                <ul class="menu-bar">
+
+                    <li><a href="Home Page.html">
+                        <div class="icon">
+                        <span class="fas fa-home fa-spin fa-3x fa-fw"></span></div> Home </a></li>
+
+                    <li class="setting-item"><a href="#">
+                        <div class="icon">
+                        <span class="fas fa-archive fa-spin fa-3x fa-fw"></span></div> Writeups <i class="fas fa-angle-right"></i></a></li>
+
+                    <li class="help-item"><a href="#">
+                        <div class="icon">
+                        <span class="fas fa-bug fa-spin fa-3x fa-fw"></span></div> Bug Bounties <i class="fas fa-angle-right"></i></a></li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon">
+                        <span class="fas fa-lightbulb fa-spin fa-3x fa-fw"></span></div> My Thoughts </a></li>
+
+                    <li><a href="About.html">
+                        <div class="icon">
+                        <span class="fas fa-user-circle fa-spin fa-3x fa-fw"></span></div> About Me </a></li> 
+
+                </ul> 
+
+                <!-- Writeups -->
+                <ul class="setting-drop">
+                    <li class="arrow back-setting-btn"><span class="fas fa-arrow-left"></span>Writeups </li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon">
+                        <span class="fas fa-book"></span></div> TryHackMe </a></li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon"> 
+                        <span class="fas fa-folder-open"></span></div> VulnHub </a></li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon">
+                        <span class="fas fa-newspaper"></span></div> HackTheBox </a></li>
+
+                    <!---
+                    <li><a href="#">
+                        <div class="icon">
+                        <span class="fas fa-globe-asia"></span></div> Languages </a></li>
+                            Eventually used for CTF's-->
+                </ul>
+
+                <!-- Bug Bounties  -->
+                <ul class="help-drop">
+                    <li class="arrow back-help-btn"><span class="fas fa-arrow-left"></span> Bug Bounties </li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon">
+                        <span class="fas fa-exclamation-triangle"></span></div> Disclosure </a></li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon">
+                        <span class="fas fa-map"></span></div> Getting Started </a></li>
+
+                    <li><a href="Coming Soon.html">
+                        <div class="icon">
+                        <span class="fas fa-wrench"></span></div> Tools </a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <script>
+            const drop_btn = document.querySelector(".drop-btn span");
+            const tooltip = document.querySelector(".tooltip");
+            const menu_wrapper = document.querySelector(".wrapper");
+            const menu_bar = document.querySelector(".menu-bar");
+            const setting_drop = document.querySelector(".setting-drop");
+            const help_drop = document.querySelector(".help-drop");
+            const setting_item = document.querySelector(".setting-item");
+            const help_item = document.querySelector(".help-item");
+            const setting_btn = document.querySelector(".back-setting-btn");
+            const help_btn = document.querySelector(".back-help-btn");
+
+            drop_btn.onclick = (()=>{
+              menu_wrapper.classList.toggle("show");
+              tooltip.classList.toggle("show");
+            });
+            setting_item.onclick = (()=>{
+              menu_bar.style.marginLeft = "-400px";
+              setTimeout(()=>{
+                setting_drop.style.display = "block";
+              }, 100);
+            });
+            help_item.onclick = (()=>{
+              menu_bar.style.marginLeft = "-400px";
+              setTimeout(()=>{
+                help_drop.style.display = "block";
+              }, 100);
+            });
+            setting_btn.onclick = (()=>{
+              menu_bar.style.marginLeft = "0px";
+              setting_drop.style.display = "none";
+            });
+            help_btn.onclick = (()=>{
+              help_drop.style.display = "none";
+              menu_bar.style.marginLeft = "0px";
+            });
+            
+        </script>
+        
+        <br></br><br></br><br></br><br></br><br></br><br></br>
+
+        <img src= "https://lh3.googleusercontent.com/hOFxekxagSDN7aZD5ikS0TkaL2E2F2lU8RIzZ7TDtn0fYJu3tfL9K2H9cyak6HJlzwLs2CHWB_BI0gxO_QSjo1YyyaVqqv0lNYGd2ZAlUZyuBNFJCL-WeB-yZtKTOB49K3XVWbR5iA=w2400"
+        width="300" height="400"
+        style="border:5px solid black"/>
+
+        <br></br>
+        <div class="Words">
+            <p> 
+                Hello! My name is Jomari Gee and I'm a sophomore studying Cyber Security at Southeast Missouri State University who has a big interest in Peneration Testing and a focus Web Applications.
+                I really enjoy the art of hacking because it forces you to think creatively to solve a techincal issue and the rush you get from doing so is amazing. However saying that I'm just a
+                beginner and only have my CompTIA Security+ certification along with some other Microsoft certifications. I'm working towards my ethical Junior Penetration Tester cert and then next year
+                will be looking to get my OSCP cert. Outside of the certification realm I really enjoy the process of Bug Bounty hunting and dabbling in a CTF or two when I'm not trying to build my club 
+                "The Hacking Guild".
+            </p>
+        </div>
+
+        <br></br>
+
+        <div class="Check">
+            <h3><u>Check Me Out</u></h3>
+        </div>
+
+        <br></br>
+        <!--If you are seeing this hi-->
+        <div class="LinkedIn">
+            <a href="https://www.linkedin.com/in/jomari-gee-b98800176/" target="Go to my LinkedIn">
+                <img src= "https://lh3.googleusercontent.com/_U7hKgFbx5VQTqCyiTcu1yVEGGiJls9e0SndcQzYYpiZkXkYDaumdxRFmPiCzBVoFmeMawzTSLVBa3496bhiLLT1J54d36TcY6X8q0Qyl0vLN1tcRnAv7vnl1AgUXkMpq87VbAPA6g=w2400"
+                width="40" height="40"/>
+            </a>
+        </div>
+
+        <div class="TryHackMe">
+            <script src="https://tryhackme.com/badge/21157"></script>
+        </div>
+    </body>  
+</html>
