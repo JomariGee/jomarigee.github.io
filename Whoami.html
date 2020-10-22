@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title> About Me </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {
+                margin:0;
+                font-family:Arial;
+                background: #0e0e0e;
+            }
+
+            h1 {
+                color: #4F759B;
+                font-size: 80px;
+                text-align: center;
+            }
+
+            h2 {
+                color: #4F759B;
+                text-align: center;
+                font-size: 40px;
+            }
+
+            h3 {
+                color: #4F759B;
+                font-size: 35px;
+            }
+
+            li {
+                color: #f2f2f2;
+                text-align: center;
+                font-size:20px;
+            }
+
+            .TryHackMe{
+                position: absolute;
+                float: right;
+                padding-left: 45px;
+            }
+
+            .LinkedIn{
+                position: absolute;
+                float: center;
+            }
+
+            /* Words About Me */
+                .Education {
+                    color: #f2f2f2;
+                }
+                .Experince {
+                    color: #f2f2f2;
+                }
+                .Interest {
+                    color: #f2f2f2;
+                }
+
+
+            .topnav {
+                overflow: hidden;
+                background-color: #374A67;
+            }
+
+                .topnav a {
+                    float: left;
+                    display: block;
+                    color: #f2f2f2;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    font-size: 17px;
+                }
+
+                .active {
+                    background-color: #141414;
+                    color: white;
+                }
+
+                .topnav .icon {
+                    display: none;
+                }
+
+            .dropdown {
+                float: left;
+                overflow: hidden;
+            }
+
+                .dropdown .dropbtn {
+                    font-size: 17px;    
+                    border: none;
+                    outline: none;
+                    color: white;
+                    padding: 14px 16px;
+                    background-color: inherit;
+                    font-family: inherit;
+                    margin: 0;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    float: none;
+                    color: black;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    text-align: left;
+                }
+
+            .topnav a:hover, .dropdown:hover .dropbtn {
+                background-color: #0e0e0e;
+                color: white;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+            @media screen and (max-width: 600px) {
+                .topnav a:not(:first-child), .dropdown .dropbtn {
+                    display: none;
+                }
+                        .topnav a.icon {
+                            float: right;
+                            display: block;
+                        }
+            }
+
+            @media screen and (max-width: 600px) {
+                .topnav.responsive {
+                    position: relative;
+                }
+                .topnav.responsive .icon {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+                    .topnav.responsive a {
+                        float: none;
+                        display: block;
+                        text-align: left;
+                    }
+                .topnav.responsive .dropdown {
+                    float: none;
+                }
+                .topnav.responsive .dropdown-content {
+                    position: relative;
+                }
+                .topnav.responsive .dropdown .dropbtn {
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+        </style>
+        </head> 
+
+        <body>
+            <div class="topnav" id="myTopnav">
+
+                <a href="index.html" class="active">Home</a>
+
+                <div class="dropdown">
+                  <button class="dropbtn">Writeups
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="ComingSoon.html">TryHackMe</a>
+                    <a href="ComingSoon.html">VulnHub</a>
+                    <a href="ComingSoon.html">HackTheBox</a>
+                  </div>
+                </div> 
+
+                <a href="ComingSoon.html"> My Thoughts</a>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Bug Bounties 
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                      <a href="ComingSoon.html">Disclosures</a>
+                      <a href="ComingSoon.html">Tools</a>
+                    </div>
+                </div>
+                
+                <a href="Whoami.html">Whoami</a>
+                    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+
+            <div class="Main-Words">
+                <h1><u>About Me</u></h1>
+            </div>
+            
+            <div class="Education">
+                <h2> Education: </h2>
+                <li> Pursuing Bachelor in Cybersecurity - Graduation '23</li>
+            </div>
+
+            <div class="Experince">
+                <h2> Experince: </h2>
+                <li> Remote Cybersecurity Co-Op at Ameren a <b>Fortune 500 Company</b> </li>
+                    <br>
+                <li> Network Operations Analyst at Big River Telephone Communications</li>
+            </div>
+
+            <div class="Interest">
+                <h2> Interest: </h2>
+                <li> Web Application Penetration Testing</li>
+                    <br>
+                <li> Bug Bounty Hunting</li>
+                    <br>
+                <li> Founder/President of The Hacking Guild</li>
+            </div>
+
+            <div class="Check">
+                <h3>Check Me Out -</h3>
+            </div>
+
+            <div class="TryHackMe">
+                <script src="https://tryhackme.com/badge/21157"></script>
+            </div>
+
+              <div class="LinkedIn">
+                <a href="https://www.linkedin.com/in/jomari-gee-b98800176/" target="Go to my LinkedIn">
+                    <img src= "https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
+                    width="40" height="40"/>
+                </a>
+            </div>
+              
+              <script>
+                function myFunction() {
+                        var x = document.getElementById("myTopnav");
+                        if (x.className === "topnav") {
+                            x.className += " responsive";
+                        } else {
+                            x.className = "topnav";
+                        }
+                    }
+              </script>
+        </body>
+    </html>
