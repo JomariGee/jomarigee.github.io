@@ -44,6 +44,7 @@
                     line-height: 1.5;
                     margin: 30px 0;
                     margin: 0 0 10px;
+                    text-align: center;
                 }
 
                 hr {
@@ -65,16 +66,40 @@
                         text-align:center;
                         color: #ffffff;
                         text-indent: 5%;
+                        line-height: 1.5;
+                        margin: 0 0 10px;
+                        margin-top: 30px;
+                        margin-right: 0px;
+                        margin-bottom: 30px;
+                        margin-left: 0px;
+                    }
+                    .Introduction a {
+                        color: #31538a;
+                        
                     }
                 .Task1 h1{
                     text-align:center;
-                    color: #ffffff;
                     margin-bottom: 0%; 
                 }
                     .Task1 p{
                             text-align:center;
                             color: #ffffff;
-                            text-indent: 5%;
+                    }
+                    .Task1 img{
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                .Task2 img{
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .Congrats h1{
+                    color:#ffffff;
+                }
+                    .Congrats hr{
+                    color:#212936;
                     }
                 /*Navigation Bar */
                 .topnav {
@@ -185,63 +210,16 @@
                     }
                 }
             /* Code Design */
-                pre code {
-                    padding: 0;
-                    font-size: inherit;
-                    color: inherit;
-                    white-space: pre-wrap;
-                    background-color: transparent;
-                    border-radius: 0;
-                }
                     code {
                         padding: 2px 4px;
                         font-size: 90%;
                         color: #c7254e;
                         background-color: #f9f2f4;
                         border-radius: 4px;
-                    }
-                    code, kbd, pre, samp {
-                        font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-                    }
-                    code, kbd, pre, samp {
                         font-family: monospace,monospace;
-                        font-size: 1em;
                     }
-                    .highlight > pre {
-                        background-image: linear-gradient( rgba(0,0,0,0.06), rgba(0,0,0,0.06) 1.5em, rgba(0,0,0,0.03) 1.5em, rgba(0,0,0,0.03) 3em);
-                        background-size: auto 3em;
-                        background-position-y: 10px;
-                        border: 1px solid rgba(0,0,0,0.1);
-                            border-left-color: rgba(0, 0, 0, 0.1);
-                            border-left-style: solid;
-                            border-left-width: 1px;
-                        border-left: 7px solid #444;
-                    }
-                    .highlight pre {
-                        border: none;
-                        background: none;
-                            background-position-y: 0%;
-                            background-image: none;
-                            background-size: auto;
-                        margin: 0;
-                    }
-                    pre {
-                        font-size: 16px;
-                        line-height: 1.5em;
-                    }
-                    pre {
-                        display: block;
-                        padding: 9.5px;
-                        margin: 0 0 10px;
-                        font-size: 13px;
-                        line-height: 1.42857143;
-                        color: #ffffff; 
-                        word-break: break-all;
-                        word-wrap: break-word;
-                        background-color: #f5f5f5;
-                        border: 1px solid #ccc;
-                        border-radius: 4px;
-                    }
+
+
         </style>
         </head>
 
@@ -293,29 +271,32 @@
 
             <div class="Introduction">
                 <h1> Introduction </h1>
-                <p>  This box is a tutorial on the exploitation of <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18634" >CVE-2019-18634</a> within the Unix Sudo Progrma and is one of two
+                <p>  This box is a tutorial on the exploitation of <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18634" >CVE-2019-1863</a> within the Unix Sudo Progrma and is one of two
                      rooms in the SudoVulns Series. It's fairly simple and straight forward and this room is a building block for the <a href="https://tryhackme.com/room/hackernote">hackerNote</a> 
                      room which requires the same CVE exploit.
                 </p>
             </div>
 
             <div class= "Task1">
-                <h1> Task 1 </h1>
+                <h1> Task 1 - Deploy </h1>
                 <p> Deploy The Box </p>
+                <img src="https://lh3.googleusercontent.com/FYhZG3jAj9XdDQT6xB0Mrhfx_-O4Egas-bCWDr9zkQobMs2D3RycPzx8g3zc1F-zDn-gjdk4a2UGae_Cx4E2J1-W9DB3bQRcGIHFUpz0hP-yAVqfCK7FWu4QxlIwsL8xPOCxNFdidQ=w2400"/>
             </div>
 
-            <a target="_blank" rel="noopener noreferrer" href="/JomariGee/jomarigee.github.io/blob/main/Final%20Team%20Picture.png">
-                <img src="/JomariGee/jomarigee.github.io/raw/main/Final%20Team%20Picture.png" alt="image">
-            </a>
-
-            <!-- Maybe make this simpler with just 1 DIV class and code element -->
-            <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                    <pre class="highlight">
-                        <code>echo 10.10.8.220 linuxprivesc &gt;&gt; /etc/hosts</code>
-                    </pre>
-                </div>
+            <div class= "Task2">
+                <h1> Task 2 - Buffer Overflow </h1>
+                <p> Connect to the machine via SSH</p> 
+                <img src ="https://lh3.googleusercontent.com/kaHbXbC8TXs16aF5iOvo5jQpNQA11Is1EBl12srbGOgIflM4-awuD2OwUna2V_jUVlqLN08qPElBA-F00XFkB8jtyVcWImVorlhZVFyo_goQenG3Yx_hoaXPtVY9wlSI4slEvqEc5w=w2400"/> 
+                <p> Use the precomplied exploit file to gain root access</p>
+                <img src ="https://lh3.googleusercontent.com/47R4msvCudZzTZfA2zeHAgPbuWmN2ZgvMsM8kmlNWbMJJZW0HTN49WH5QlRpno8HPdxdkxkZNB6ru-rBykIiq-snQ257cSCqX1vJUhZZImcHCAZRxvvhsNMHGZ_ATEqv81dQaYhb1Q=w2400"/> 
+                <p> Navigate to the Root Directory to find the Root Flag</p>
+                <img src ="https://lh3.googleusercontent.com/RYlvlRuRWJUjnpom8-WBEd4ubK1rbTc4cZoVxj_jGYLtWSm-b0gNPElpdNmh5Xn6dZ3X3WVLjqK5WGrjfG9K-i36zwf4NoW8fpvWwzaUgiQGOqEAF0tb2pa44t3L6GFVyyCjO41wgg=w2400"/>
             </div>
 
+            <div class="Congrats">
+                <hr>
+                <h1> Congratulations! </h1>  
+                <hr>
+            </div>
         </body>
     </html>
