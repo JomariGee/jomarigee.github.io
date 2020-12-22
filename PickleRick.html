@@ -289,20 +289,18 @@
                         color: #f1f1f1;
                         padding-right: 150px;
                     }
-                /* Responsive Design */
-                    @media screen and (max-width: 600px) {
+                /* Page Structure */
+                    .container {
+                        width: 90%;
+                        max-width: 1000px;
+                        margin: 0 auto;
                     }
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        section {
-            display: block;
-            margin: 0 0 20px 0;
-        }
+                    section {
+                        display: block;
+                        margin: 0 0 20px 0;
+                    }
             </style>
-            </head>           
+        </head>           
             <body>
                 <ul class ="navList">
                     <li><a href="Home.html">Home</a></li>
@@ -324,35 +322,40 @@
                     
                     <div class="content">
                         <section>
-                        <div class="top-container">
-                            <div class="Top">
-                                <h1> Pickle Rick </h1> 
+                            <div class="top-container">
+                                <div class="Top">
+                                    <h1> Pickle Rick </h1> 
+                                </div>
                             </div>
-                        </div>
         
-                        <div class="Enter-Room">
-                            <hr>
-                        </div>
-        
-                        <div class="Starter_Image">
-                            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*"/>
-                        </div>
-
-                        <h1> Join The Room -</h1>
                             <div class="Enter-Room">
-                                <a href="https://tryhackme.com/room/picklerick" target="Go to TryHackMe Box">
-                                    <img src =https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Room%20Pictures/Pickle%20Rick%20Snip.png alt="Join The Room"> 
-                                </a>
-                                <p>Join the <a href="https://tryhackme.com/room/picklerick"target="Go to TryHackMe Box"> TryHackMe Pickle Rick Room</a></p>
+                                <hr>
                             </div>
-                            <div class = "container">
-                        <div class="Information_Gathering">
-                            <h1> Information Gathering </h1>
-                                <p>The target IP address is provided when the machine is deployed. </p>
-                                <p> <b>Target: </b> 10.10.96.48</p>
-                        </div>
+        
+                            <div class="Starter_Image">
+                                <picture>
+                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" media="(max-width: 400px)">
+                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*">
+                                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" alt="Flowers" style="width:auto;"> 
+                                </picture>
+                                <img src=""/>
+                            </div>
+
+                            <h1> Join The Room -</h1>
+                                <div class="Enter-Room">
+                                    <a href="https://tryhackme.com/room/picklerick" target="Go to TryHackMe Box">
+                                        <img src =https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Room%20Pictures/Pickle%20Rick%20Snip.png alt="Join The Room"> 
+                                    </a>
+                                    <p>Join the <a href="https://tryhackme.com/room/picklerick"target="Go to TryHackMe Box"> TryHackMe Pickle Rick Room</a></p>
+                                </div>
+                                <div class = "container">
+                            <div class="Information_Gathering">
+                                <h1> Information Gathering </h1>
+                                    <p>The target IP address is provided when the machine is deployed. </p>
+                                    <p> <b>Target: </b> 10.10.96.48</p>
+                            </div>
             
-                        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
             
                         <div class="Scanning">
                             <h1>Scanning and Enumeration </h1>
@@ -361,57 +364,39 @@
                                         <code><p>➜ nmap -sT -sV -Pn 10.10.96.48</p></code><div class="next"></div>
                                     </div>
                                 </p>
-                                <div class="Starter_Image">
                                     <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Nmap.png"></a>
-                                </div>
                                 <p>Looking at the scan we can see the following ports and services are open:</p>
                                     <li>Port 22/tcp - SSH - (OpenSSH 7.2p2)</li>
                                     <li>Port 80/tcp - FTP - (Apache httpd 2.4.18)</li>
-                                    <button onclick="topFunction()" id="myBtn" title="Go to the top">Top</button>
                             <!--I might need to seperate these two, but for now they're rocking the same Div <div class= "Task2">-->
                                 <p> After looking over the information from the Nmap scan I throw the IP address into a gobuster scan so I can widen the attack surface a little bit.
                                     I get back an interesting domain called /assets. Which could contain some information, but first I'm going to check out the main domain.</p>
                                     <code><p>➜ gobuster dir -u http://10.10.96.48:80 -w /usr/wordlists/dirbuster/directory-list-2.3-small.txt -n -e</p></code><div class="next"></div>
-                                
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Gobuster.png">
-                                    
                                 <h1> Crawling The Website </h1>
                                 <p> Checking out the main domain I see nothing that sticks out except for the phrase "pickle-reverse potion" which might be an indicator that there is a 
                                     reverse shell to be executed on the machine somewhere.</p>
-                                    <div class="Starter_Image">
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Reverse%20Shell%20Message.png">
-                                    </div>
                                 <p> Armed with that little thinking I go and check the /assets directory from my Gobuster scan and boom what do you know a directory listing to upload files.
                                     So I start a Nikto scan to see if I can pull back anything else interesting.</p> 
-                                    <div class="Starter_Image">
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Assets.png">
-                                    </div>
                                 <p> From the Nikto scan I get what appears to be a login portal. Sweet! I checked the source code and couldn't find anything interesting, so I'll brute force the
                                     portal via Hydra. </p>
-                                    <div class="Starter_Image">
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Login%20Page.png">
-                                    </div>
                                 <p> Before I brute-force it I need to first figure out a few things about the portal. I inspect element then go to the network section and submit another login 
                                     request and see that they send POST request in the lower left hand corner.</p>
-                                    <div class="Starter_Image">
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/POST%20Function.png">
-                                    </div>
                                 <p> Next thing I do is notice the exact error message that is given to me when I enter the wrong credentials. Which it tells me "invalid username or password."</p>
-                                    <div class="Starter_Image">
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Invalid%20Username%20or%20password..png">
-                                    </div>
+
                                 <p> Using my knowledge from the <a href="https://tryhackme.com/room/hydra"> Hydra</a> box and with the help of this <a href="https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/">article</a> 
                                     I was able to craft my Hydra command and try to brute force the login page, 
                                     but that failed because all the passwords were incorrect.</p>
-                                    <div class="Starter_Image">
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Hydra.png"/>
-                                    </div>
                                 <h1> Directory Enumeration </h1>
                                     <p> So after multiple failed attempts to get the correct login credentials I decided to dig deeper. I needed to try and widen the attack surface even more, so I figured 
                                     another better Gobuster scan would do the trick.</p>
-                                        <div class="Starter_Image">
                                             <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Gobuster2.png"/>
-                                        </div>
                                 <p> Which was valuable because it found a robots.txt file for me and it contained only one phrase, nothing else.</p>
                                     <div class="Starter_Image">
                                         <img src="https://i.imgur.com/NCcUFJg.png"/>
@@ -513,14 +498,4 @@
                     }
                 </script>
             </body>
-        <!-- https://blog.razrsec.uk/tryhackme-tartarus/ -->
-        <!-- Try to add more gifs and meme pictures for successful actions -->
-        <!-- Things to change 
-                - Choose a better p element font 
-                - Make the h1 element bigger for stuff in the Writeup
-                - Make the p element bigger and don't make it seem as wide, ya know 
-                - Put a box around the code to make it look cleaner
-                - Add better spacing to the words and images, so they don't feel as on top of each other 
-                <img src=""/>
-            -->
     </html>
