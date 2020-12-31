@@ -89,7 +89,7 @@
                             background: #0e0e0e; 
                         }
                 /* Back to The Top Button */
-                /* Need to add a ghost affect and it hilights when someone goes over it */
+                /* Need to add a ghost affect and it highlights when someone goes over it */
                     #myBtn {
                         display: none;
                         position: fixed;
@@ -127,9 +127,25 @@
                             margin-top: 15px;
                             margin-bottom: 15px;
                         }
-                        .code_block p{
-                            background-color:#0e0e0e;
-                            font-size: 15px;
+                    pre {
+                        background: rgba(0,0,0,0.9);
+                        border: 1px solid rgba(255,255,255,0.15);
+                        padding: 15px;
+                        font-size: 16px;
+                        color: #d0d0d0;
+                        border-radius: 2px;
+                        text-wrap: normal;
+                        overflow: auto;
+                            overflow-y: auto;
+                        overflow-y: hidden;
+                    }
+                        code.cooltext{
+                            background: rgba(0,0,0,0.9);
+                            border: 1px solid rgba(255,255,255,0.15);
+                            padding: 0px 3px;
+                            margin: 0px -3px;
+                            color: white;
+                            border-radius: 2px;
                         }
                     .Top{
                         font-size: 200%;
@@ -199,6 +215,24 @@
                         .Scanning li{
                             margin-top: 15px;
                         }
+                /* Image Elements */
+                    img[data-action="zoom"] {
+                        cursor: pointer;
+                        cursor: -webkit-zoom-in;
+                        cursor: -moz-zoom-in;
+                    }
+                        .zoom-img-wrap, img {
+                            max-width: 100%;
+                            height: auto;
+                            vertical-align: middle;
+                        }
+                        img {
+                            border-style: none;
+                            border-top-style: none;
+                            border-right-style: none;
+                            border-bottom-style: none;
+                            border-left-style: none;
+                        }
                 /* Congratulations Section */
                     .Congrats h1{
                         color:#ffffff;
@@ -217,8 +251,8 @@
                 /*Navigation Bar */
                     .navList {
                         background-color: #374A67;
-                        border-top: 5px solid#374A67;
-                        border-bottom: 5px solid#374A67;
+                        border-top: 0px solid#374A67;
+                        border-bottom: 0px solid#374A67;
                         box-shadow: 0 2px 8px 0px rgba(0, 0, 0, 0.2);
                         list-style-type: none;
                         margin: 0;
@@ -239,7 +273,7 @@
                     }
                     .navList a {
                         color: #f2f2f2;
-                        padding: 15px;
+                        padding: 8px;
                         text-decoration: none;
                         display: block;
                         transition: .3s;
@@ -311,15 +345,9 @@
                             <a href="ComingSoon.html">HackTheBox</a>
                         </div>
                     </li>
-                        <li><a href="#">Bug Bounty<i class="fa fa-caret-down"></i></a>
-                            <div class="inside">
-                                <a href="ComingSoon.html">Tools</a>
-                                <a href="ComingSoon.html">Disclosures</a>
-                            </div>
-                        </li>
+                        <li><a href="Whoami.html">Bug Bounty</a></li>
                         <li><a href="Whoami.html">Whoami</a></li>
                 </ul>
-                    
                     <div class="content">
                         <section>
                             <div class="top-container">
@@ -333,18 +361,10 @@
                             </div>
         
                             <div class="Starter_Image">
-                                <picture>
-                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" media="(max-width: 500px)">
-                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" media="(max-width: 600px)">
-                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" media="(max-height: 400px)">
-                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" media="(max-height: 500px)">
-                                    <source srcset="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" media="(max-height: 600px)">
-                                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*" alt="Flowers" style="width:auto;"> 
-                                </picture>
-                                <img src=""/>
+                                <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*"/>
                             </div>
 
-                            <h1> CHANGEDJoin The Room -</h1>
+                            <h1> Join The Room -</h1>
                                 <div class="Enter-Room">
                                     <a href="https://tryhackme.com/room/picklerick" target="Go to TryHackMe Box">
                                         <img src =https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Room%20Pictures/Pickle%20Rick%20Snip.png alt="Join The Room"> 
@@ -352,6 +372,16 @@
                                     <p>Join the <a href="https://tryhackme.com/room/picklerick"target="Go to TryHackMe Box"> TryHackMe Pickle Rick Room</a></p>
                                 </div>
                                 <div class = "container">
+                            <!-- Table of Contents Go Here 
+                            <div class="Table">
+                                <h1> Table of Contents </h1>
+                                <li> Scanning and Enumeration </li>
+                                <li>Words</li>
+                                <li>Words</li>
+                            </div>
+
+                            You need to change the word sizing 
+                            -->
                             <div class="Information_Gathering">
                                 <h1> Information Gathering </h1>
                                     <p>The target IP address is provided when the machine is deployed. </p>
@@ -363,10 +393,9 @@
                         <div class="Scanning">
                             <h1>Scanning and Enumeration </h1>
                                 <p> Doing a quick nmap scan of the open ports gets things going:
-                                    <div class="code_block">
-                                        <code><p>➜ nmap -sT -sV -Pn 10.10.96.48</p></code><div class="next"></div>
+                                    <div class="code_block"> <!-- Need to Fix This stuff (Make This Code Your Own)-->
+                                        <pre><code>➜ nmap -sT -sV -Pn 10.10.96.48</code></pre>
                                     </div>
-                                </p>
                                     <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Nmap.png"></a>
                                 <p>Looking at the scan we can see the following ports and services are open:</p>
                                     <li>Port 22/tcp - SSH - (OpenSSH 7.2p2)</li>
@@ -374,12 +403,12 @@
                             <!--I might need to seperate these two, but for now they're rocking the same Div <div class= "Task2">-->
                                 <p> After looking over the information from the Nmap scan I throw the IP address into a gobuster scan so I can widen the attack surface a little bit.
                                     I get back an interesting domain called /assets. Which could contain some information, but first I'm going to check out the main domain.</p>
-                                    <code><p>➜ gobuster dir -u http://10.10.96.48:80 -w /usr/wordlists/dirbuster/directory-list-2.3-small.txt -n -e</p></code><div class="next"></div>
+                                    <pre><code>➜ gobuster dir -u http://10.10.96.48:80 -w /usr/wordlists/dirbuster/directory-list-2.3-small.txt -n -e</code></pre>
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Gobuster.png">
                                 <h1> Crawling The Website </h1>
                                 <p> Checking out the main domain I see nothing that sticks out except for the phrase "pickle-reverse potion" which might be an indicator that there is a 
                                     reverse shell to be executed on the machine somewhere.</p>
-                                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Reverse%20Shell%20Message.png">
+                                        <img class="" src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Reverse%20Shell%20Message.png" alt="" data-action="zoom" style="">
                                 <p> Armed with that little thinking I go and check the /assets directory from my Gobuster scan and boom what do you know a directory listing to upload files.
                                     So I start a Nikto scan to see if I can pull back anything else interesting.</p> 
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Assets.png">
@@ -391,7 +420,6 @@
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/POST%20Function.png">
                                 <p> Next thing I do is notice the exact error message that is given to me when I enter the wrong credentials. Which it tells me "invalid username or password."</p>
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Invalid%20Username%20or%20password..png">
-
                                 <p> Using my knowledge from the <a href="https://tryhackme.com/room/hydra"> Hydra</a> box and with the help of this <a href="https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/">article</a> 
                                     I was able to craft my Hydra command and try to brute force the login page, 
                                     but that failed because all the passwords were incorrect.</p>
@@ -417,7 +445,9 @@
                                     <div class="Starter_Image">    
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Real%20Rick.png"/>
                                     </div>
-                                <p> Navigating back to the command panel I enter the basic ls command to get some interesting files to pop back. I take note of the Sup3rS3cretPickl3Ingred.txt and clue.txt files</p>
+                                <p> Navigating back to the command panel I enter the basic ls command to get some interesting files to pop back. I take note of the 
+                                    <code class="cooltext">Sup3rS3cretPickl3Ingred.txt</code> 
+                                    and clue.txt files</p>
                                     <div class="Starter_Image">    
                                         <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Pickle%20Rick/Looking%20at%20Weird%20Files.png"/>
                                     </div>
