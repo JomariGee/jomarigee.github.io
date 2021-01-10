@@ -4,12 +4,14 @@
             <title> Welcome </title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            body {
-                margin:0;
-                font-family:Arial;
-                background: #0e0e0e;
-            }
+            <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicon(2).png"/>
+            <style>
+                body,html {
+                    height: 100%;
+                    margin:0;
+                    font-family:Arial;
+                    background: #0e0e0e;
+                }
                 /*Navigation Bar */
                     .topnav {
                             overflow: hidden;
@@ -107,44 +109,38 @@
                                     text-align: left;
                                 }
                             }
-            .bg-image {
-                /* The image used */
-                background-image: url("https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80");
-                
-                /* Add the blur effect */
-                filter: blur(8px);
-                -webkit-filter: blur(8px);
-  
-                /* Full height */
-                height: 100%; 
-  
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                }
-
-                /* Position text in the middle of the page/image */
-                .bg-text {
-                    background-color: rgb(0,0,0); /* Fallback color */
-                    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-                    color: white;
-                    font-weight: bold;
-                    border: 3px solid #f1f1f1;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 2;
-                    width: 50%;
-                    padding: 20px;
-                    text-align: center;
-                }
-        </style>
+                /* Background Image */
+                    .bg-image {
+                        background-image: url("https://images.unsplash.com/photo-1514168757508-07ffe9ae125b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80");
+                        filter: blur(8px);
+                        -webkit-filter: blur(8px);
+                        height: 100%; 
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        }
+                /* Text over image */
+                    .bg-text {
+                        background-color: rgb(0,0,0); 
+                        background-color: rgba(0,0,0, 0.4); 
+                        color: white;
+                        font-weight: bold;
+                        border: 3px solid #f1f1f1;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 2;
+                        width: 50%;
+                        padding: 20px;
+                        text-align: center;
+                        margin-top: 56px;
+                    }
+            </style>
         </head> 
 
         <body>
-            <!-- Navigation Bar-->
+            <!-- Navigation Bar -->
             <div class="topnav" id="myTopnav">
 
                 <a href="Home.html" class="active">Home</a>
@@ -167,21 +163,25 @@
                 <a href="Whoami.html">Whoami</a>
                     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
-            
-            <div class="bg-text">
-                <h2>Hello,</h2>
-                <h1 style="font-size:50px">I like to hack</h1>
-            </div>
-              <script>
-                  // Navigation Bar 
+
+            <!-- Background Image -->
+            <div class="bg-image"></div>
+                <div class="bg-text">
+                    <h2>Hello,</h2>
+                    <h1 style="font-size:50px">I like to hack</h1>
+                </div>
+
+            <!-- JS Code-->
+            <script>
+                // Navigation Bar 
                 function myFunction() {
-                        var x = document.getElementById("myTopnav");
-                        if (x.className === "topnav") {
-                            x.className += " responsive";
-                        } else {
-                            x.className = "topnav";
-                        }
+                    var x = document.getElementById("myTopnav");
+                    if (x.className === "topnav") {
+                        x.className += " responsive";
+                    } else {
+                        x.className = "topnav";
                     }
-              </script>
+                }
+            </script>
         </body>
     </html>
