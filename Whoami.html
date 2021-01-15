@@ -1,254 +1,302 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title> About Me </title>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <head>
+        <title> About Me </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicon(2).png"/>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-            body {
-                margin:0;
-                font-family:Arial;
-                background: #0e0e0e;
-            }
-
-            h1 {
-                color: #4F759B;
-                font-size: 80px;
-                text-align: center;
-            }
-
-            h2 {
-                color: #4F759B;
-                text-align: center;
-                font-size: 40px;
-            }
-
-            h3 {
-                color: #4F759B;
-                font-size: 35px;
-            }
-
-            li {
-                color: #f2f2f2;
-                text-align: center;
-                font-size:20px;
-            }
-
-            .TryHackMe{
-                position: absolute;
-                float: right;
-                padding-left: 45px;
-            }
-
-            .LinkedIn{
-                position: absolute;
-                float: center;
-            }
-
-            /* Words About Me */
-                .Education {
-                    color: #f2f2f2;
+            /* Page Elements */
+                body {
+                    margin:0;
+                    font-family:Arial;
+                    background: #0e0e0e;
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-rendering: optimizeLegibility;
                 }
-                .Experince {
-                    color: #f2f2f2;
-                }
-                .Interest {
-                    color: #f2f2f2;
-                }
-
-
-            .topnav {
-                overflow: hidden;
-                background-color: #374A67;
-            }
-
-                .topnav a {
-                    float: left;
-                    display: block;
-                    color: #f2f2f2;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
-                    font-size: 17px;
-                }
-
-                .active {
-                    background-color: #141414;
-                    color: white;
-                }
-
-                .topnav .icon {
-                    display: none;
-                }
-
-            .dropdown {
-                float: left;
-                overflow: hidden;
-            }
-
-                .dropdown .dropbtn {
-                    font-size: 17px;    
-                    border: none;
-                    outline: none;
-                    color: white;
-                    padding: 14px 16px;
-                    background-color: inherit;
-                    font-family: inherit;
+                    body,html {
+                    padding: 0;
                     margin: 0;
+                    display:block;
+                    flex-direction: column;
+                    }
+                .container {
+                    width: 90%;
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }                
+            /* Highlighting Text  */
+                ::-moz-selection {
+                    color: white;
+                    background: #4F759B;
                 }
-
-                .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    background-color: #f9f9f9;
-                    min-width: 160px;
-                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                    z-index: 1;
+                    ::selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+            /* Scroll Bar*/
+                ::-webkit-scrollbar {
+                    width: 12px;
                 }
-
-                .dropdown-content a {
-                    float: none;
-                    color: black;
-                    padding: 12px 16px;
-                    text-decoration: none;
-                    display: block;
-                    text-align: left;
+                    ::-webkit-scrollbar-track {
+                        background: #1a1c20; 
+                    }
+                    ::-webkit-scrollbar-thumb {
+                        background: #4F759B; 
+                    }
+                    ::-webkit-scrollbar-thumb:hover {
+                        background: #0e0e0e; 
+                    }
+            /*Navigation Bar */
+                nav {
+                    height: 6rem;
+                    width: 99vw;
+                    background-color: #131418;
+                    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+                    display: flex;
+                    position: sticky;
+                    z-index: 10;
                 }
-
-            .topnav a:hover, .dropdown:hover .dropbtn {
-                background-color: #0e0e0e;
+                    .nav-links{
+                        display: flex;
+                        list-style: none; 
+                        width: 88vw;
+                        padding: 0 0.7vw;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        text-transform: uppercase;
+                    }
+                    .nav-links li a{
+                        color: transparent;
+                        text-decoration: none;
+                        margin: 0 0.7vw;
+                        overflow: hidden;
+                        background: linear-gradient(to right, #427ebb, #427ebb 50%, #ffffff 50%);
+                        transition: background-position 275ms ease;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: none;
+                        background-size: 200% 100%;
+                        background-position: 100%;
+                        text-decoration: none;
+                    }
+                    .nav-links li a:hover {
+                        color: #4F759B;
+                        background-position: 0 100%;
+                    }
+                    .nav-links li {
+                        position: relative;
+                    }
+                    .nav-links li a::before {
+                        content: "";
+                        display: block;
+                        width: 0%;
+                        background-color: #4F759B;
+                        position: absolute;
+                                        
+                    }
+                    .nav-links li a:hover::before{
+                        width: 80%;
+                    }
+                /* JS Hamburger Icon*/
+                    .hamburger div{
+                        width: 30px;
+                        height:3px;
+                        background: #f2f5f7;
+                        margin: 5px;
+                        transition: all 0.3s ease;
+                    }
+                        .hamburger{
+                            display: none;
+                        }
+                /* Responsive Menu*/
+                    @media screen and (max-width: 800px){
+                        nav{
+                            position: sticky;
+                            z-index: 3;
+                        }
+                        .hamburger{
+                            display:block;
+                            position: absolute;
+                            cursor: pointer;
+                            right: 5%;
+                            top: 50%;
+                            transform: translate(-5%, -50%);
+                            z-index: 2;
+                            transition: all 0.7s ease;
+                        }
+                        .nav-links{
+                            position: fixed;
+                            background: #131418;
+                            height: 100vh;
+                            width: 100%;
+                            flex-direction: column;
+                            clip-path: circle(50px at 90% -20%);
+                            -webkit-clip-path: circle(50px at 90% -10%);
+                            transition: all 1s ease-out;
+                            pointer-events: none;
+                        }
+                        .nav-links.open{
+                            clip-path: circle(1000px at 90% -10%);
+                            -webkit-clip-path: circle(1000px at 90% -10%);
+                            pointer-events: all;
+                        }
+                        .nav-links li{
+                            opacity: 0;
+                        }
+                        .nav-links li:nth-child(1){
+                            transition: all 0.5s ease 0.2s;
+                        }
+                        .nav-links li:nth-child(2){
+                            transition: all 0.5s ease 0.4s;
+                        }
+                        .nav-links li:nth-child(3){
+                            transition: all 0.5s ease 0.6s;
+                        }
+                        .nav-links li:nth-child(4){
+                            transition: all 0.5s ease 0.7s;
+                        }
+                        .nav-links li:nth-child(5){
+                            transition: all 0.5s ease 0.8s;
+                        }
+                        .nav-links li:nth-child(6){
+                            transition: all 0.5s ease 0.9s;
+                            margin: 0;
+                        }
+                        .nav-links li:nth-child(7){
+                            transition: all 0.5s ease 1s;
+                            margin: 0;
+                        }
+                        li.fade{
+                            opacity: 1;
+                        }
+                    }
+                /* Hamburger Animation*/
+                    .toggle .line1{
+                        transform: rotate(-45deg) translate(-5px,6px);
+                    }
+                    .toggle .line2{
+                        transition: all 0.7s ease;
+                        width:0;
+                    }
+                    .toggle .line3{
+                        transform: rotate(45deg) translate(-5px,-6px);
+                    }
+            /* Top Elements */
+                .Top{
+                    margin-bottom: 45px;
+                }
+                    .Top h1{
+                        color:#ffffff;
+                        text-align: center;
+                        font-size: 45px;
+                    }
+                    .Top hr {
+                        margin-bottom: 30px;
+                    }
+            /* Whoami */
+                h1 {
+                    color: #4F86C6;
+                }
+                p{
+                    text-align:left;
+                    color: #ffffff;
+                    min-width: 100%;
+                    font-size: 22px;
+                    line-height: 1.5;
+                    margin: 0 0 10px;
+                    margin-top: 30px;
+                    margin-right: 0px;
+                    margin-bottom: 30px;
+                    margin-left: 0px;
+                }
+            /* Fixed Footer */
+            .footer {
+                position:absolute;
+                overflow: hidden;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #374A67;
                 color: white;
             }
-
-                .dropdown-content a:hover {
-                    background-color: #ddd;
-                    color: black;
+                .footer p {
+                    text-align: center;
                 }
-
-                .dropdown:hover .dropdown-content {
-                    display: block;
-                }
-
-            @media screen and (max-width: 600px) {
-                .topnav a:not(:first-child), .dropdown .dropbtn {
-                    display: none;
-                }
-                        .topnav a.icon {
-                            float: right;
-                            display: block;
-                        }
-            }
-
-            @media screen and (max-width: 600px) {
-                .topnav.responsive {
-                    position: relative;
-                }
-                .topnav.responsive .icon {
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                }
-                    .topnav.responsive a {
-                        float: none;
-                        display: block;
-                        text-align: left;
-                    }
-                .topnav.responsive .dropdown {
-                    float: none;
-                }
-                .topnav.responsive .dropdown-content {
-                    position: relative;
-                }
-                .topnav.responsive .dropdown .dropbtn {
-                    display: block;
-                    width: 100%;
-                    text-align: left;
-                }
-            }
-        </style>
-        </head> 
-
-        <body>
-            <div class="topnav" id="myTopnav">
-
-                <a href="Home.html" class="active">Home</a>
-
-                <div class="dropdown">
-                  <button class="dropbtn">Writeups
-                    <i class="fa fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content">
-                    <a href="TryHackMe.html">TryHackMe</a>
-                    <a href="ComingSoon.html">VulnHub</a>
-                    <a href="ComingSoon.html">HackTheBox</a>
-                  </div>
-                </div> 
-
-                <a href="ComingSoon.html"> My Thoughts</a>
-
-                <div class="dropdown">
-                    <button class="dropbtn">Bug Bounties 
-                      <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                      <a href="ComingSoon.html">Disclosures</a>
-                      <a href="ComingSoon.html">Tools</a>
-                    </div>
-                </div>
                 
-                <a href="Whoami.html">Whoami</a>
-                    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </style>
+    </head> 
+    <body>
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Writeups.html">Writeups</a></li>
+                <li><a href="ComingSoon.html">My Thoughts</a></li>
+                <li><a href="ComingSoon.html">Bug Bounties</a></li>
+                <li><a href="Whoami.html">Whoami</a></li>
+            </ul>
+        </nav>
+
+        <!-- Page -->
+        <div class="container">
+
+            <!-- Title -->
+            <div class="Top">
+                <h1> Whoami </h1> 
+                <hr>
             </div>
 
-            <div class="Main-Words">
-                <h1><u>About Me</u></h1>
-            </div>
-            
-            <div class="Education">
-                <h2> Education: </h2>
-                <li> Pursuing Bachelor in Cybersecurity - Graduation '23</li>
-            </div>
-
-            <div class="Experince">
-                <h2> Experince: </h2>
-                <li> Remote Cybersecurity Co-Op at Ameren a <b>Fortune 500 Company</b> </li>
-                    <br>
-                <li> Network Operations Analyst at Big River Telephone Communications</li>
+            <!-- Whoami -->
+            <div class="Intro">
+                <h1> Hello ☺</h1>
+                <p> What's up, thanks for checking out my blog. </p>
+                <p> I am working towards my Bachelor's in Cyber security with a minor in computer science, taking a massive interest to bug bounty hunting with a web application focus.</p>
+                <p> I really enjoy hacking and look towards becoming a penetration tester!</p>
             </div>
 
-            <div class="Interest">
-                <h2> Interest: </h2>
-                <li> Web Application Penetration Testing</li>
-                    <br>
-                <li> Bug Bounty Hunting</li>
-                    <br>
-                <li> Founder/President of The Hacking Guild</li>
-            </div>
-
-            <div class="Check">
-                <h3>Check Me Out -</h3>
-            </div>
-
-            <div class="TryHackMe">
-                <script src="https://tryhackme.com/badge/21157"></script>
-            </div>
-
-              <div class="LinkedIn">
-                <a href="PickleRick.html" target="Go to my LinkedIn">
-                    <img src= "https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
-                    width="40" height="40"/>
+            <!-- Check Me Out -->
+            <div class="Social">
+                <h1> Check Me Out - </h1>
+                <p> You can check me out on these platforms below!</p>
+                <a href="https://tryhackme.com/p/wh1t3r0s3.ene" target="TryHackMe Page">
+                    <img src="https://tryhackme-badges.s3.amazonaws.com/wh1t3r0s3.ene.png" alt="TryHackMe">
+                </a>
+                <a class="Spaces" href="https://www.linkedin.com/in/jomari-gee-b98800176/" target="LinkedIn Page">
+                    <img src="https://image.flaticon.com/icons/png/512/124/124011.png" alt="LinkedIn" width=55 height="55">
+                </a>
+                <a class="Spaces" href="https://www.hackthebox.eu/home/users/profile/466298" target="HackTheBox"> 
+                    <img src="http://www.hackthebox.eu/badge/image/466298" alt="Hack The Box"> 
                 </a>
             </div>
-              
-              <script>
-                function myFunction() {
-                        var x = document.getElementById("myTopnav");
-                        if (x.className === "topnav") {
-                            x.className += " responsive";
-                        } else {
-                            x.className = "topnav";
-                        }
-                    }
-              </script>
-        </body>
-    </html>
+        </div>
+            <!-- Footer Message -->
+            <footer>
+                <div class="footer">
+                    <p> Site built by me :)</p>
+                </div>
+            </footer>
+        <!-- JS Code -->
+        <script>
+        //Navigation Bar 
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const links = document.querySelectorAll(".nav-links li");
+        // Hamburger Effect
+        hamburger.addEventListener('click', ()=>{
+        //Animate Links
+        navLinks.classList.toggle("open");
+        links.forEach(link => {
+            link.classList.toggle("fade");
+        });
+
+        //Hamburger Animation
+        hamburger.classList.toggle("toggle");
+    });
+        </script>
+    </body>
+</html>
