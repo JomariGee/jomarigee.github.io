@@ -730,7 +730,7 @@
                     <p> After looking over the information from the Nmap scan I throw the IP address into a gobuster scan so I can widen the attack surface a little bit.
                         I get back an interesting domain called <code class="text">/assets</code> .Which could contain some information, but first I'm going to check out the main domain.</p>
                         <pre><code>➜ gobuster dir -u http://10.10.96.48:80 -w /usr/wordlists/dirbuster/directory-list-2.3-small.txt -n -e</code></pre>
-                            <img src="https://github.com/JomariGee/jomarigee.github.io/blob/main/Images/Images/TryHackMe/Pickle%20Rick/Gobuster.png" alt="Gobuster Scan">
+                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Pickle%20Rick/Gobuster.png" alt="Gobuster Scan">
                 <h1 id="Crawling"> Crawling The Website </h1>
                     <p> Checking out the main domain I see nothing that sticks out except for the phrase <code class="text">pickle-reverse potion</code> which might be an indicator that there is a 
                         reverse shell to be executed on the machine somewhere.</p>
