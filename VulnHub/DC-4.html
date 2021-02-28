@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+    <head>
+        <title> VulnHub | DC-4</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicons/Favicon(2).png"/>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            /* Page Elements */
+                body {
+                    margin:0;
+                    font-family:Arial;
+                    background: #0e0e0e;
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-rendering: optimizeLegibility;
+                }
+                    body,html {
+                    padding: 0;
+                    margin: 0;
+                    display:block;
+                    flex-direction: column;
+                    }
+                /*Text Customization */
+                    h1 {
+                        color: #4F759B;
+                        text-align: center;
+                    }
+                    h2 {
+                        color: #4F759B;
+                    }
+                    h3 {
+                        color: #ffffff;
+                    }
+                    h6 {
+                        color: #4F759B;
+                    }
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    li {
+                        color: #ffffff;
+                        text-align: left;
+                        
+                    }
+                /* Highlighting Text  */
+                    ::-moz-selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+                    ::selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+                /* Scrolling Progress Bar */
+                    .progress {
+                        position: fixed;
+                        top: 0px;
+                        background-color: transparent;
+                        width: 100vw;
+                        height: 1rem;
+                    }
+                        .fill {
+                            background-color: #536e88;
+                            width: 40px;
+                            height: 100%;
+                        }
+                /* Scroll Bar*/
+                    ::-webkit-scrollbar {
+                        width: 12px;
+                    }
+                        ::-webkit-scrollbar-track {
+                            background: #1a1c20; 
+                        }
+                        ::-webkit-scrollbar-thumb {
+                            background: #4F759B; 
+                        }
+                        ::-webkit-scrollbar-thumb:hover {
+                            background: #0e0e0e; 
+                        }
+                /* Back to The Top Button */
+                    #myBtn {
+                        display: none;
+                        position: fixed;
+                        bottom: 20px;
+                        right: 30px;
+                        z-index: 99;
+                        font-size: 15px;
+                        border: none;
+                        outline: none;
+                        background-color: #4F759B;
+                        color: #0e0e0e;
+                        cursor: pointer;
+                        padding: 15px;
+                        border-radius: 75px;
+                        opacity: 0.6;
+                        transition: 0.3s;
+                    }
+                    #myBtn:hover{
+                        background-color: #f1f1f1;
+                        opacity: 1;
+                        box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                        transform: translateY(-0.70em);
+                    }
+                /* Page Elements */
+                    .Enter-Room{
+                        text-align: left;
+                        margin-bottom: 1.3%;
+                    }
+                    .Enter-Room h1 {
+                        text-align: left;
+                    }
+                        .Enter-Room p{
+                            color: #ffffff;
+                            font-size: 20px;
+                        }
+                        .Enter-Room a{
+                            text-decoration:dashed;
+                        }
+                        .Enter-Room hr {
+                            margin-top: 55px;
+                            margin-bottom: 35px;
+                        }
+                    pre {
+                        margin-bottom: 50px;
+                        background: rgba(0,0,0,0.9);
+                        border: 1px solid rgba(255,255,255,0.15);
+                        padding: 15px;
+                        font-size: 16px;
+                        color: #d0d0d0;
+                        border-radius: 2px;
+                        text-wrap: normal;
+                        overflow: auto;
+                        overflow-y: auto;
+                        overflow-y: hidden;
+                    }
+                        code.text{
+                            background: rgba(0,0,0,0.9);
+                            border: 1px solid rgba(255,255,255,0.15);
+                            padding: 0px 3px;
+                            margin: 0px -3px;
+                            color: white;
+                            border-radius: 2px;
+                        }
+                    .Top{
+                        font-size: 200%;
+                        margin-top: 20px;
+                        margin-bottom: -45px;
+                    }
+                        .Top h1{
+                            color:#fff;
+                            text-align: center;
+                        }
+                        .LowerHR {
+                            margin-bottom: 20px;
+                            max-width: 100%;
+                        }
+                    .Information_Gathering h1 {
+                        text-align:left;
+                        margin-bottom: 0%;   
+                        font-size: 30px;
+              
+                    }
+                        .Information_Gathering p{
+                            text-align:left;
+                            color: #ffffff;
+                            min-width: 100%;
+                            font-size: 19px;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            margin-top: 30px;
+                            margin-right: 0px;
+                            margin-bottom: 30px;
+                            margin-left: 0px;
+                        }
+                        .Information_Gathering a {
+                            color: #31538a;
+                        }
+                        .Information_Gathering b{
+                            text-align:left;
+                            color: #ffffff;
+                            min-width: 100%;
+                            font-size: 19px;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            margin-top: 30px;
+                            margin-right: 0px;
+                            margin-bottom: 30px;
+                            margin-left: 0px;
+                        }
+                    .Writeup h1{
+                        text-align:left;
+                        font-size: 30px;
+                    }
+                        .Writeup h3{
+                            font-size: 30px;
+                            color: #990D35;
+                        }
+                        .Writeup p{
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Writeup a {
+                            text-decoration: underline;
+                        }
+                        .Writeup li{
+                            list-style-type: none;
+                            margin-top: 15px;
+                        }
+                    .Question {
+                        border-left-color: var(--wp--preset--color--primary);
+                        border-left-color: #406dcf;
+                        border-left-style: solid;
+                        /*margin: 0 0 1.75em;
+                        margin-bottom: 1.75em;*/
+                        padding-left: 1em;
+                    }
+                        cite {
+                            color: #fff;
+                        }                         
+                    .Machine_Information h1 {
+                        text-align:left;
+                        font-size: 30px;
+                    }
+                        .Machine_Information p{ 
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Machine_Information a {
+                            text-decoration: underline;
+                        }
+                    /* A Element Hovering Effect */
+                    a.text:hover, a.text:active {
+                        color:#4F759B;
+                    }
+                /* Image Elements */
+                    img {
+                        max-width: 100%;
+                        height: 100%;
+                        border-radius: 5px;
+                        object-fit: contain;
+                    }
+                /* Congratulations Section */
+                    .Congrats h1{
+                        text-align:left;
+                        font-size: 30px;
+                        color: #4F759B;
+                    }
+                        .Congrats p {
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Congrats hr{
+                        color:#212936;
+                        max-width: 100%;
+                        }
+                        .Congrats img {
+                            max-width: 100%;
+                            height: 100%;
+                            border-radius: 5px;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            margin: 30px 0;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .UpperHR{
+                            margin-top: 20px;
+                        }           
+                /*Navigation Bar */
+                nav {
+                    height: 6rem;
+                    width: 98.9vw;
+                    background-color: #131418;
+                    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+                    display: flex;
+                    position: sticky;
+                    z-index: 10;
+                }
+                    .nav-links{
+                        display: flex;
+                        list-style: none; 
+                        width: 88vw;
+                        padding: 0 0.7vw;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        text-transform: uppercase;
+                    }
+                    .nav-links li a{
+                        text-decoration: none;
+                        margin: 0 0.7vw;
+                        overflow: hidden;
+                        background: linear-gradient(to right, #427ebb, #427ebb 50%, #ffffff 50%);
+                        transition: background-position 275ms ease;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: none;
+                        background-size: 200% 100%;
+                        background-position: 100%;
+                        text-decoration: none;
+                    }
+                    .nav-links li a:hover {
+                        color: #4F759B;
+                        background-position: 0 100%;
+                    }
+                    .nav-links li {
+                        position: relative;
+                    }
+                    .nav-links li a::before {
+                        content: "";
+                        display: block;
+                        width: 0%;
+                        background-color: #4F759B;
+                        position: absolute;
+                                       
+                    }
+                    .nav-links li a:hover::before{
+                        width: 80%;
+                    }
+                    /* JS Hamburger Icon*/
+                        .hamburger div{
+                            width: 30px;
+                            height:3px;
+                            background: #f2f5f7;
+                            margin: 5px;
+                            transition: all 0.3s ease;
+                        }
+                            .hamburger{
+                                display: none;
+                            }
+                    /* Responsive Menu*/
+                        @media screen and (max-width: 800px){
+                            nav{
+                                position: sticky;
+                                z-index: 3;
+                            }
+                            .hamburger{
+                                display:block;
+                                position: absolute;
+                                cursor: pointer;
+                                right: 5%;
+                                top: 50%;
+                                transform: translate(-5%, -50%);
+                                z-index: 2;
+                                transition: all 0.7s ease;
+                            }
+                            .nav-links{
+                                position: fixed;
+                                background: #131418;
+                                height: 100vh;
+                                width: 100%;
+                                flex-direction: column;
+                                clip-path: circle(50px at 90% -20%);
+                                -webkit-clip-path: circle(50px at 90% -10%);
+                                transition: all 1s ease-out;
+                                pointer-events: none;
+                            }
+                            .nav-links.open{
+                                clip-path: circle(1000px at 90% -10%);
+                                -webkit-clip-path: circle(1000px at 90% -10%);
+                                pointer-events: all;
+                            }
+                            .nav-links li{
+                                opacity: 0;
+                            }
+                            .nav-links li:nth-child(1){
+                                transition: all 0.5s ease 0.2s;
+                            }
+                            .nav-links li:nth-child(2){
+                                transition: all 0.5s ease 0.4s;
+                            }
+                            .nav-links li:nth-child(3){
+                                transition: all 0.5s ease 0.6s;
+                            }
+                            .nav-links li:nth-child(4){
+                                transition: all 0.5s ease 0.7s;
+                            }
+                            .nav-links li:nth-child(5){
+                                transition: all 0.5s ease 0.8s;
+                            }
+                            .nav-links li:nth-child(6){
+                                transition: all 0.5s ease 0.9s;
+                                margin: 0;
+                            }
+                            .nav-links li:nth-child(7){
+                                transition: all 0.5s ease 1s;
+                                margin: 0;
+                            }
+                            li.fade{
+                                opacity: 1;
+                            }
+                        }
+                    /* Hamburger Animation*/
+                        .toggle .line1{
+                            transform: rotate(-45deg) translate(-5px,6px);
+                        }
+                        .toggle .line2{
+                            transition: all 0.7s ease;
+                            width:0;
+                        }
+                        .toggle .line3{
+                            transform: rotate(45deg) translate(-5px,-6px);
+                        }
+                /* Read Other Post Element */
+                    .new_article {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-pack: justify;
+                        -ms-flex-pack: justify;
+                        justify-content: space-between;
+                        margin-bottom: 50px;
+                        filter: brightness(75%);
+                    }                    
+                        .new_article a:first-child {
+                            margin-right: 4%;
+                        }
+                        .new_article .next, .new_article .previous {
+                            position: relative;
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: end;
+                            -ms-flex-align: end;
+                            align-items: flex-end;
+                            width: 100%;
+                            min-height: 230px;
+                            padding: 0 25px 25px;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            transition: transform .2s,-webkit-transform .2s;
+                            -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                            box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-color: #0a0a0a;
+                        }
+                        .new_article .next .next_article, .new_article .previous .next_article {
+                            margin-bottom: 0;
+                            font-size: 21px;
+                            color: #ffff;
+                        }
+                        .new_article a:last-child {
+                            margin-right: 0;
+                        }
+                        .new_article .next {
+                            text-align: right;
+                            margin-left: auto;
+                        }
+                        .new_article .next .nav, .new_article .previous .navigation {
+                            display: inline-block;
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            font-family: Poppins,Arial,sans-serif;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: rgba(255,255,255,.8);
+                        }
+                        .new_article .next .new , .new_article .previous .new {
+                            position: relative;
+                            z-index: 1;
+                            width: 100%;
+                        }
+                        .new_article .next .next_article, .new_article .previous .next_article {
+                            margin-bottom: 0;
+                            font-size: 21px;
+                        }
+                        .new_article .next .navigation, .new_article .previous .navigation {
+                            display: inline-block;
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            font-family: Poppins,Arial,sans-serif;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: rgba(255,255,255,.8);
+                        }
+                        /* Hover Effect */
+                        .previous:hover {
+                            box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                            transform: translateY(-0.70em);
+                        }
+                            .next:hover {
+                                box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                                transform: translateY(-0.70em);
+                            }
+                            .new:hover {
+                                box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                                transform: translateY(-0.70em);
+                            }
+                /* Page Structure */
+                    .container {
+                        width: 90%;
+                        max-width: 1000px;
+                        margin: 0 auto;
+                    }
+                    .container p {
+                        text-align: left;
+                    }
+                    .container li {
+                        text-align: left;
+                    }
+                /* Main Starter Image */
+                    .image-box {
+                        position: relative;
+                        padding-top: 50%;
+                        border-radius: 30px;
+                        overflow: hidden;
+                        -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                        box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                        background-color: #0a0a0a;
+                    }
+                        .post-image {
+                            position: absolute;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            -o-object-fit: cover;
+                            object-fit: cover;
+                            -webkit-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                        }
+                        section {
+                            display: block;
+                            margin: 0 0 20px 0;
+                        }
+                        .col-12 {
+                            width: 100%;
+                        }
+                        .col {
+                            padding-left: 15px;
+                            padding-right: 15px;
+                        }
+                /* Table of Contents */
+                    .Table h1 {
+                        text-align: left;
+                    }
+                        .Table a {
+                        min-width: 100%;
+                        font-size: 20px;
+                        text-align:left;
+                        color: #ffffff;
+                        line-height: 1.8;
+                        margin: 0 0 10px;
+                        margin-top: 30px;
+                        margin-right: 0px;
+                        margin-bottom: 30px;
+                        margin-left: 0px;
+                        -webkit-transition: all .2s;
+                        -o-transition: all .2s;
+                        transition: all .2s;
+                        transition-property: all;
+                        transition-duration: 0.2s;
+                        transition-timing-function: ease;
+                        transition-delay: 0s;
+                        }   
+                            .Table a:hover {
+                                background-color: #0E273C;
+                                margin-left:-20px;
+                                padding-left:20px;
+                                padding-right:20px;                    
+                            }
+                        .Table li {
+                            list-style-type: none;
+                        }
+                /* Name/Time/Reading Section */
+                    .Name {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        -ms-flex-wrap: wrap;
+                        flex-wrap: wrap;
+                        -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                        justify-content: center;
+                        color: #fff;
+                    }   
+                        .Author {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            align-items: center;
+                        }
+                        .Author_Link {
+                            font-size: 17px;
+                            text-decoration: underline;
+                            color: #fff;
+                        }
+                        .Date {
+                            font-size: 17px;
+                            color: #fff;
+                            margin-left: 8px;
+                        }
+                /* Fixed Footer */
+                .footer {
+                    overflow: hidden;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: #374A67;
+                    color: white;
+                    text-align: center;
+                }
+                    .footer p {
+                        text-align: center;
+                    }
+        </style>
+    </head>           
+    <body>
+        <!-- Navigation Bar-->
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/Navigation Bar/Home.html">Home</a></li>
+                <li><a href="/Navigation Bar/Writeups.html">Writeups</a></li>
+                <li><a href="/Navigation Bar/ComingSoon.html">My Thoughts</a></li>
+                <li><a href="/Navigation Bar/ComingSoon.html">Bug Bounties</a></li>
+                <li><a href="/Navigation Bar/Whoami.html">Whoami</a></li>
+            </ul>
+        </nav>
+
+        <!-- Progress Bar -->
+        <div id="progress" class="progress">
+            <div class="fill"></div>
+        </div>
+
+        <!-- Article Elements -->    
+        <div class="container">
+
+            <!-- Title-->
+            <div class="Top">
+                <h1> DC-4 </h1> 
+            </div>
+
+            <!-- HR Element -->
+            <div class="Enter-Room">
+                <hr>
+            </div>
+
+            <!-- Main Image -->
+            <div class="col col 12">
+                <div class="image-box">
+                    <img class="post-image" src="https://images.unsplash.com/photo-1580735828815-dcde33d515f9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1498&q=80" alt="DC Picture">
+                </div>
+            </div>
+
+            <!-- Name + Date + Time To Read -->
+            <div class="Name">
+                <div class="Author">
+                    <a class="text" href="Whoami.html" class="Author_Link" target="Open Whoami Page"> Jomari Gee </a>
+                </div>
+                <span class="Date">● Feb 10 2020</span>
+                <span class="Date"><p>● 4 Minute Read</p></span>
+            </div>
+
+            <!-- Table Of Contents-->  
+            <div class="Table">
+                <h1> Table of Contents </h1>
+                <u1>
+                    <li><a href="#Machine Information"> ○ Machine Information</a></li>    
+                    <li><a href="#Information Gathering"> ○ Information Gathering</a></li>                               
+                    <li><a href="#Scanning/Enumeration"> ○ Scanning/Enumeration </a></li>                   
+                    <li><a href="#Login Brute Force"> ○ Login Brute Force</a></li>
+                    <li><a href="#Reverse Shell "> ○ Reverse Shell </a></li>
+                    <li><a href="#Brute Force SSH"> ○ Brute Force SSH</a></li>
+                    <li><a href="#Fun Mail"> ○ Fun Mail</a></li>
+                    <li><a href="#Privilege Escalation"> ○ Privilege Escalation</a></li>
+                    <li><a href="#Root Flag "> ○ Root Flag </a></li>
+                    <li><a href="#Finished"> ○ Finished</a></li>
+                </u1>
+            </div>
+
+        <!-- Machine Information -->
+        <div class="Machine_Information">
+            <h1 id="Machine Information"> Machine Information </h1>
+                <p> DC-4 is another vulnerable machine in the DC-series. However, unlike previous DC boxes there is only one flag on this machine. Thankfully there are multiple entry points.</p>
+                <p> You can access this <a class="text" href="https://www.vulnhub.com/entry/dc-4,313/" target="Go to the machine">vulnerable machine here</a></p>
+        </div>
+
+        <!-- IP Section -->
+        <div class="Information_Gathering">
+            <h1 id="Information Gathering"> Information Gathering </h1>
+            <p> The target IP address isn't provided upon machine start, so I used the tool <code class="text">netdiscover</code> to find the IP of the machine.</p>
+                <pre><code>➜ sudo netdiscover -r 192.168.0.1/24</code></pre>
+                <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Netdiscover%20Scan.png" alt="Netdiscover Scan">
+        </div>
+
+            <!-- Back To Top Button -->
+            <button onclick="topFunction()" id="myBtn" title="Go up">▲</button>
+
+            <!-- Article Content -->
+            <div class="Writeup">
+                <h1 id="Scanning/Enumeration">Scanning/Enumeration </h1>
+                    <p> Running a normal nmap scan on the target I see that port 22 and port 80 are open, which is nice because the box seems to be pretty normal so far.</p>
+                        <pre><code>➜ nmap -A -p- 192.168.0.151 -o nmap.txt</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Nmap%20Scan.png" alt="Nmap Scan"></a>
+                    <p> Next, I ran a Gobuster scan, which actually didn't display anything interesting except for a <code class="text">command.php</code> directory, that I couldn't visit yet.</p>
+                        <pre><code>➜ gobuster dir -u 192.168.0.151 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -n -e -o dir.txt -x tml,php -t 30 </code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Gobuster%20Scan.png" alt="Gobuster Scan">
+                <h1 id="Login Brute Force">Login Brute Force</h1>
+                    <p> I tried using Nikto and Nmap vulns scan to find any low hanging fruit, but nothing was found so I went to browse the main domain and found a login portal. This portal is different 
+                        then others I've come across because you don't get an error message after entering the wrong credentials, weird.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Login%20Portal.png" alt="Login Portal">
+                    <p> After smashing my head into the wall I was able to login successfully via the usage of Hydra, however, this was a nice tricky login portal at first. In my Hydra command I used 
+                        <code class="text">:S=command</code> at the end because <code class="text">command.php</code> was the only place I couldn't access. This thinking was also derived because I didn't know what
+                        an error message looked like, since none were give.</p> 
+                        <pre><code>➜ hydra -l admin -P /home/kali/rockyou.txt 192.168.0.151 http-post-form "/login.php:username=^USER^&password=^PASS^:S=command" -I </code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Hydra%20Output.png" alt="Hydra Output">
+                <h1 id="Reverse Shell ">Reverse Shell </h1>
+                    <p> Once logged in I'm only given the option to select command and go to the <code class="text">command.php</code> directory, go figure that's why the command success message worked.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Selection%20Menu.png" alt="Selection Menu">
+                    <p> After clicking the command Button I'm given the option to click one of three buttons to run commands. I clicked the List Files option and as expected the files were listed. However, 
+                        these were the same directories found with my Gobuster scan. This time they were displayed in the Linux Filesystem. Along with the command I ran, interesting. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Listing%20Files.png" alt="Listing Files">
+                    <p> I capture that request via Burp Suite to see if there was any filtering in place and to my surprise there wasn't. Each command entered is sent unfiltered which opens up easy reverse shell possibilities.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Burp%20Suite%20Request.png" alt="Burp Suite Request"/>
+                    <p> To get the reverse shell I used Pentest Monkey's reverse shell cheat sheet, with the netcat command. I sent the command via Burp Suite repeater like the image below editing the radio element.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Getting%20The%20Reverse%20Shell.png" alt="Getting The Reverse Shell"/>
+                    <p> Now I just make a proper <a class="text" href="https://forum.hackthebox.eu/discussion/142/obtaining-a-fully-interactive-shell" target="Target">TTY Shell</a> with so that I can handle all the possible commands I may need to use.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Shell%20Caught.png" alt="Shell Caught"/>
+                <h1 id="Brute Force SSH">Brute Force SSH</h1>
+                    <p> When looking around the file system you see multiple users, but the only user that matters is Jim, because their files contain a long list of old passwords. These can potentially be used to brute force ssh.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Jims%20Passwords.png" alt="Jims Passwords"/>
+                    <p> I made a simple <a class="text" href="https://www.redhat.com/sysadmin/simple-http-server" target="Target">python web server</a>, so that I could download those passwords onto my local machine and begin Brute Forcing the ssh service.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Web%20Server%20Download.png" alt="Web Server Download"/>
+                    <p> I use Hydra along with the password file from Jim to brute force his SSH login and get his password!</p>
+                        <pre><code>➜ hydra -l jim -P old-passwords.bak 192.168.0.151 -t 4 ssh -I </code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/SSH%20Login.png" alt="SSH Login"/> 
+                <h1 id="Fun Mail">Fun Mail</h1>
+                    <p> After looking around Jim's file system I couldn't find anything of value at all, so I decided to import <a class="text" href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite" target="Target">LinPEAS</a> for further enumeration. 
+                        There was nothing of interest that came from the scan.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/LinPEAS%20Scan.png" alt="LinPEAS Scan"/>
+                    <p> However, at the end of the scan I was told that I have mail in <code class="text">/var/mail/jim</code> , which was pretty odd. This message wasn't a result of a scan, but the scan helped to draw attention to the mail filesystem. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Mail%20Message.png"alt="Mail Message"/>
+                    <p> Which is where the password for another user, Charles, was located in an email to Jim!</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Charles%20Password.png" alt="Charles Password"/>
+                <h1 id="Privilege Escalation">Privilege Escalation</h1>
+                    <p> Now that I'm logged in as the user Charles I can go for a privilege escalation because as user Jim I wasn't in the sudeors file so that wasn't an option.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Sudo%20Output.png" alt="Sudo Output"/>
+                    <p> In order to become root I don't even need a password, which is awesome! However cool that is I didn't know what teehee was, so after some googling I figured out the box's creator was making a joke with the name teehee because it's a play on the command tee.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Tee%20Command.png" alt="Tee Command"/>
+                <h3 id="Root Flag">Root Flag </h3>
+                    <p> After a few checks with a couple of fake commands I understand that the teehee command functioned similar to the tee command, but the tee command was restricted. So in order to become root I would need to use teehee, duh. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Working%20with%20Tee%20Command.png" alt="Working with Tee Command"/>
+                    <p> I entered the same teehee command as above, this time I added the user I am (charles) to the sudoers path. Therefore allowing me to <code class="text">sudo su</code> as the root user!!</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Becoming%20Root.png" alt="Becoming Root"/>
+                    <p> From here it was just a simple navigation to the root directory, then catting out that file to complete the box.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-4/Root%20Flag.png" alt="Root Flag"/>
+            </div>
+
+            <!-- End of Article -->
+            <footer>
+                <!-- GIF-->
+                <div class="Congrats">
+                    <div class="UpperHR">
+                        <h1 id="Finished"> Finished </h1>
+                        <p> This box was a lot of fun to me because I had dealt with text filtering in boxes before, but not as unsuspecting as with this machine which was fun. Then the actual way to get root was fun with the mail prompt then the teehee command. ☺ </p>
+                        <img src="https://i.gifer.com/150L.gif" alt="Happy Gif"/>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- New Article Selection -->
+                <div class="new_article">
+                    <a class="previous" href="/VulnHub/DC-3.html" style="background-image: url(https://images.unsplash.com/photo-1599066634419-0e3572eeb169?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1346&q=80)" alt="Article Selection">
+                        <div class="new">
+                            <div class="navigation navigation__previous">< Prior Page</div>
+                                <h4 class="next_article">VulnHub DC-3</h4>
+                        </div>
+                    </a>
+                    <a class="next" href="/HackTheBox/Jerry.html" style="background-image: url(https://miro.medium.com/max/590/1*6vyFg1efjSxOXiLaY5BQtA.png)" alt="Article Selection">
+                        <div class="new">
+                            <div class="navigation navigation__next">Next Page > </div>
+                                <h4 class="next_article">HackTheBox Jerry</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Footer Message -->
+                <div class="footer">
+                    <p> Site built by me :)</p>
+                </div>
+            </footer>
+
+            <!-- JS Code -->
+            <script>
+                // Navigation Bar 
+                const hamburger = document.querySelector(".hamburger");
+                    const navLinks = document.querySelector(".nav-links");
+                    const links = document.querySelectorAll(".nav-links li");
+                    
+                    hamburger.addEventListener('click', ()=>{
+                        //Animate Links
+                        navLinks.classList.toggle("open");
+                        links.forEach(link => {
+                            link.classList.toggle("fade");
+                        });
+                    
+                        //Hamburger Animation
+                        hamburger.classList.toggle("toggle");
+                    });                             
+                // Back To The Top Button 
+                    var mybutton = document.getElementById("myBtn");
+                        window.onscroll = function() {scrollFunction()};
+                        function scrollFunction() {
+                            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                                mybutton.style.display = "block";
+                                } else {
+                                mybutton.style.display = "none";
+                            }
+                        }
+                        function topFunction() {
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                    }
+                // Progress Bar 
+                    const progressBar = document.getElementById("progress");
+                    const progressFill = progressBar.firstElementChild;
+                    window.addEventListener("scroll", () => {
+                        updateProgress();
+                    });
+                    function updateProgress() {
+                        let width = progressBar.clientWidth;
+                        let progress =
+                            window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
+                        // fill progress bar
+                        progressFill.style.width = Math.ceil(100 * progress) + "%";
+                    }
+                    updateProgress();
+            </script>
+        </div>
+    </body>
+</html>
