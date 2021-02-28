@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <head>
-        <title> TryHackMe |  SimpleCTF </title>
+        <title> TryHackMe | Git Happens </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicons/Favicon(2).png"/>
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -42,9 +42,6 @@
                         color: #ffffff;
                         text-align: left;
                         
-                    }
-                    i {
-                        text-align: left;
                     }
                 /* Highlighting Text  */
                     ::-moz-selection {
@@ -124,7 +121,6 @@
                             margin-top: 55px;
                             margin-bottom: 35px;
                         }
-                        
                     pre {
                         margin-bottom: 50px;
                         background: rgba(0,0,0,0.9);
@@ -197,13 +193,8 @@
                         font-size: 30px;
                     }
                         .Writeup h3{
-                            font-size: 25px;
+                            font-size: 30px;
                             color: #990D35;
-                        }
-                        .Writeup i {
-                            color: #ffffff;
-                            list-style-type: none;
-                            margin-top: 15px;
                         }
                         .Writeup p{
                             color: #ffffff;
@@ -236,7 +227,7 @@
                     }
                         cite {
                             color: #fff;
-                        }   
+                        }                         
                     .Machine_Information h1 {
                         text-align:left;
                         font-size: 30px;
@@ -681,7 +672,7 @@
 
             <!-- Title-->
             <div class="Top">
-                <h1> SimpleCTF </h1> 
+                <h1> Git Happens </h1> 
             </div>
 
             <!-- HR Element -->
@@ -692,7 +683,7 @@
             <!-- Main Image -->
             <div class="col col 12">
                 <div class="image-box">
-                    <img class="post-image" src="https://miro.medium.com/max/2464/1*ZcLxpFb2nATe72LYiTGFJg.png" alt="Main Image">
+                    <img class="post-image" src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80" alt="Image For This Machine">
                 </div>
             </div>
 
@@ -701,7 +692,7 @@
                 <div class="Author">
                     <a class="text" href="Whoami.html" class="Author_Link" target="Open Whoami Page"> Jomari Gee </a>
                 </div>
-                <span class="Date">● 20 Aug 2020</span>
+                <span class="Date">● Nov 15 2020</span>
                 <span class="Date"><p>● 2 Minute Read</p></span>
             </div>
 
@@ -709,30 +700,29 @@
             <div class="Table">
                 <h1> Table of Contents </h1>
                 <u1>
-                    <li><a href="#Machine_Information"> ○ Machine Information</a></li>    
-                    <li><a href="#Information-Gathering"> ○ Information Gathering</a></li>                               
-                    <li><a href="#Scanning/Enumeration"> ○ Scanning/Enumeration</a></li>
-                    <li><a href="#CVE Exploit"> ○ CVE Exploit</a></li>
-                    <li><a href="#SSH"> ○ SSH</a></li>
-                    <li><a href="#User-Flag"> ○ User Flag</a></li>
-                    <li><a href="#Root-Flag"> ○ Root Flag</a></li>
-                    <li><a href="#Finished"> ○ Finished </a></li>
+                    <li><a href="#Machine Information"> ○ Machine Information</a></li>    
+                    <li><a href="#Information Gathering"> ○ Information Gathering</a></li>                               
+                    <li><a href="#Scanning/Enumeration"> ○ Scanning/Enumeration </a></li>                   
+                    <li><a href="#Main Domain"> ○ Main Domain</a></li>
+                    <li><a href="#Git Tools Fun"> ○ Git Tools Fun</a></li>
+                    <li><a href="#The Flag"> ○ The Flag</a></li>
+                    <li><a href="#Finished"> ○ Finished</a></li>
                 </u1>
             </div>
 
-            <!-- Machine Information -->
-            <div class="Machine_Information">
-                <h1 id="Machine_Information"> Machine Information </h1>
-                    <p>  SimpleCTF is a beginner level CTF that requires you to use a CVE, so that you can find the user and the root flag for the box.</p>
-                    <p> You can Join this <a class="text" href="https://tryhackme.com/room/easyctf" target="Go to the machine">TryHackMe Machine Here</a></p>
-            </div>
+        <!-- Machine Information -->
+        <div class="Machine_Information">
+            <h1 id="Machine Information"> Machine Information </h1>
+                <p> Git Happens is a fun exposure to how insecure git "version control" can be when done improperly. This machine only requires you to find one password file!</p>
+                <p> You can Join this <a class="text" href="https://tryhackme.com/room/githappens" target="Go to the machine">TryHackMe Machine Here</a></p>
+        </div>
 
-            <!-- IP Section -->
-            <div class="Information_Gathering">
-                <h1 id="Information-Gathering"> Information Gathering </h1>
-                    <p>The target IP address is provided when the machine is deployed. </p>
-                    <p> <b>Target: </b> 10.10.158.221</p>
-            </div>
+        <!-- IP Section -->
+        <div class="Information_Gathering">
+            <h1 id="Information Gathering"> Information Gathering </h1>
+                <p> The target IP address is provided when the machine is deployed. </p>
+                <p> <b>Target: </b> 10.10.67.57</p>
+        </div>
 
             <!-- Back To Top Button -->
             <button onclick="topFunction()" id="myBtn" title="Go up">▲</button>
@@ -740,81 +730,40 @@
             <!-- Article Content -->
             <div class="Writeup">
                 <h1 id="Scanning/Enumeration">Scanning/Enumeration </h1>
-                    <p> I run an nmap scan to see what kind of machine I'm dealing with and get the following three ports are open.</p> 
-                            <pre><code>➜ nmap -sC -sV -A 10.10.158.221 </code></pre>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Nmap%20Scan.png" alt="Nmap Scan"></a>
-                    <p>Looking at the scan we can see the following ports and services are open:</p>
+                    <p> Doing a normal nmap scan I just get back port 80 being open meaning there is only a website on this box, so far. However nmap does tell me about a git
+                        repository being found in directory <code class="text"> /.git </code>.</p>
+                        <pre><code>➜ nmap -A 10.10.67.57</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/Nmap%20Scan.png" alt="Nmap Scan"></a>
+                    <p> Looking at the scan we can see the following ports and services are open:</p>
                         <ul>
-                            <li>● Port 21/tcp - FTP - (vsftpd 3.03)</li>
-                            <li>● Port 80/tcp - HTTP - (httpd 2.4.18)</li>
-                            <li>● Port 2222/tcp - SSH - (sshd 7.2p2)</li>
+                            <li>● Port 80/tcp - HTTP - (nginx 1.14.0) </li>
                         </ul>
+                    <p> Now I throw a gobuster scan at the target, but unfortunately only get back one directory, <code class="text"> /css</code>. So I decide to go browse the website
+                        for more interesting information. </p>
+                        <pre><code>➜ gobuster dir -u http://10.10.67.57 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -n -e -x php,html,txt -t 30 </code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/Gobuster%20Scan.png" alt="Gobuster Scan">
+                <h1 id="Main Domain">Main Domain</h1>
+                    <p> Going to the website I'm presented with a login page and I'm thinking that I'll throw Hydra at it to brute force it. I decided to wait on that and come back to it
+                        later because I don't want to fall down a rabbit hole, just yet.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/Login%20Page.png" alt="Login Page">
+                    <p> I go to the <code class="text">/.git</code> directory found from the nmap scan because this machine is called Git Happens lol. While there I found a directory
+                    listing for a companies Git page.</p> 
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/GitHub%20Listing.png" alt="GitHub Listing">
+                <h1 id="Git Tools Fun">Git Tools Fun</h1>
+                    <p> At first I was going through the tools manually looking for something, then I figured there had to be a tool out there for this. So I looked around for a tool and found 
+                        <a class="text" href="https://github.com/internetwache/GitTools" target="Target">GitTools</a>, which dumps the git repository for much more in depth look.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/Git%20Tools%20Look.png" alt="Git Tools Look">
+                    <p> Then after the repository was dumped I entered <code class="text">git log</code> to see what the last git commits were. The last commit talked about the login page 
+                        and how insecure it was made.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/Insecure%20Login%20Page.png" alt="Insecure Login Page">
+                <h3 id="The Flag">The Flag</h3>
+                    <p> Then I entered <code class="text">git show </code> to analyze the commits and found that the password was hiding in the <code class="text">e56eaa8e29b589976f33d76bc58a0c4dfb9315b1 </code> 
+                    file.</p>
                     <blockquote class="Question">
-                        <p>1. How many services are running under port 1000?</p>
-                        <cite>Answer: 2</cite>
+                        <p>1. Find the Super Secret Password</p>
+                        <cite>Answer: T**********************************</cite>
                     </blockquote>
-                    <blockquote class="Question">
-                        <p>2. What is running on the higher port?</p>
-                        <cite>Answer: ssh</cite>
-                    </blockquote>
-                    <p> While my nmap scan was going I ran a gobuster scan to enumerate for more sub-directories and got an interesting one pop back called <code class="text">simple</code></p>
-                            <pre><code>➜ gobuster dir -u http://10.10.158.221 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -n -e -x php,html,txt -t 30 </code></pre>
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Gobuster%20Scan.png" alt="Gobuster Scan">
-                    <h1 id="CVE Exploit">CVE Exploit </h1>
-                        <p> The simple domain is a page for a CMS called CMS Made Simple, which is whats needed to figure out what CVE will be used for this machine.</p> 
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/CMS%20Made%20Simple.png" alt="CMS Made Simple">
-                        <p> Searching on Exploit-DB I found out that the CMS was vulnerable to <a class="text" href="https://www.exploit-db.com/exploits/46635" target="Go to the CVE">CVE-2019-9053</a>
-                            which is an SQL Injection.</p>
-                                <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Exploit-DB.png" alt="Exploit-DB">
-                                <blockquote class="Question">
-                                    <p>3. What's the CVE you're using against the application? </p>
-                                    <cite>Answer: CVE-2019-9053</cite>
-                                </blockquote>
-                                <blockquote class="Question">
-                                    <p>4. To what kind of vulnerability is the application vulnerable? </p>
-                                    <cite>Answer: sqli</cite>
-                                </blockquote>
-                        <p> After downloading the CVE and using python2 to get it to work I was given a username of <code class="text">mitch</code> along with a hashed password</p>
-                                <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Hashed%20Password.png" alt="Hashed Password">
-                                <blockquote class="Question">
-                                    <p>5. What's the password?</p>
-                                    <cite>Answer: secret</cite>
-                                </blockquote>
-                <h1 id="SSH">SSH </h1>
-                    <p> Once John The Ripper cracked the password I was able to login as Mitch into ssh on port 2222 because ssh wasn't running on port 22 for this box. </p>
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Login%20To%20SSH.png" alt="Login To SSH">
-                            <blockquote class="Question">
-                                <p>6. Where can you login with the details obtained?</p>
-                                <cite>Answer: ssh</cite>
-                            </blockquote>
-                <h3 id="User-Flag">User Flag</h1>
-                    <p> The first flag was simply sitting in Mitch's directory which was nice because it just required a simple ls command.</p>
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/User%20Flag.png" alt="User Flag"/>
-                            <blockquote class="Question">
-                                <p>7. What's the user flag?</p>
-                                <cite>Answer: G*****************</cite>
-                            </blockquote>
-                    <p> Then to answer the other users present question I just bounced back a directory and found the username.</p>
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Other%20User.png" alt="Other User"/>
-                            <blockquote class="Question">
-                                <p>8. Is there any other user in the home directory? What's its name?</p>
-                                <cite>Answer: s******</cite>
-                            </blockquote>
-                <h3 id="Root-Flag">Root Flag</h1>
-                    <p> The last thing I needed to was get the root flag so I ran <code class="text">sudo -l</code> so that I knew what it took to become root. Which is awesome because 
-                        to become root you don't need a password!!</p>
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Sudo-l.png" alt="Sudo-l"/>
-                            <blockquote class="Question">
-                                <p>9. What can you leverage to spawn a privileged shell?</p>
-                                <cite>Answer: v**<cite>
-                            </blockquote>
-                    <p> Thanks to this <a class="text" href="https://www.andreafortuna.org/2018/05/16/exploiting-sudo-for-linux-privilege-escalation/" target="Go to the article">article</a> 
-                        I was able to become root on the machine and get the flag to complete it.</p>
-                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/SimpleCTF/Root%20Flag.png" alt="Root Flag"/> 
-                            <blockquote class="Question">
-                                <p>10. What's the root flag?</p>
-                                <cite>Answer: W**********************</cite>
-                            </blockquote>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Git%20Happens/The%20Flag.png" alt="The Flag"/>
             </div>
 
             <!-- End of Article -->
@@ -823,7 +772,7 @@
                 <div class="Congrats">
                     <div class="UpperHR">
                         <h1 id="Finished"> Finished </h1>
-                        <p> This machine was like the title suggested, pretty simple and straight forward. Really fun because I felt good for once.☺ </p>
+                        <p> This was a good CTF, which I made it harder then it needed to be. This machine could have been also accomplished through manual looking, but I opted not to go down that route.☺ </p>
                         <img src="https://i.gifer.com/150L.gif" alt="Happy Gif"/>
                         <hr>
                     </div>
@@ -831,16 +780,16 @@
 
                 <!-- New Article Selection -->
                 <div class="new_article">
-                    <a class="previous" href="/TryHackMe/PickleRick.html" style="background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pickle-rick-1576362367.jpg?crop=1.00xw:0.892xh;0,0.108xh&resize=1200:*)" alt="Article Selection">
+                    <a class="previous" href="/TryHackMe/Gaming Server.html" style="background-image: url(https://images.unsplash.com/photo-1587833982781-8a8cb5cc176b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)" alt="Article Selection">
                         <div class="new">
                             <div class="navigation navigation__previous">< Prior Page</div>
-                                <h4 class="next_article">TryHackMePickle Rick</h4>
+                                <h4 class="next_article">TryHackMe Ignite</h4>
                         </div>
                     </a>
-                    <a class="next" href="/TryHackMe/Startup.html" style="background-image: url(https://images.unsplash.com/photo-1573171432553-3af5fbb70d1a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8OTJ8fHJlZCUyMHBlcHBlcnxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60)" alt="Article Selection">
+                    <a class="next" href="/TryHackMe/Gaming Server.html" style="background-image: url(https://images.unsplash.com/photo-1523504754200-45cd634649d7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fGJsYWNrJTIwc3VpdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)" alt="Article Selection">
                         <div class="new">
                             <div class="navigation navigation__next">Next Page > </div>
-                                <h4 class="next_article">TryHackMe Startup</h4>
+                                <h4 class="next_article">TryHackMe Agent Sudo</h4>
                         </div>
                     </a>
                 </div>
