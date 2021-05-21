@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+    <head>
+        <title> VulnHub | DC-6 </title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicons/Favicon(2).png"/>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            /* Page Elements */
+                body {
+                    margin:0;
+                    font-family:Arial;
+                    background: #0e0e0e;
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-rendering: optimizeLegibility;
+                }
+                    body,html {
+                    padding: 0;
+                    margin: 0;
+                    display:block;
+                    flex-direction: column;
+                    }
+                /*Text Customization */
+                    h1 {
+                        color: #4F759B;
+                        text-align: center;
+                    }
+                    h2 {
+                        color: #4F759B;
+                    }
+                    h3 {
+                        color: #ffffff;
+                    }
+                    h6 {
+                        color: #4F759B;
+                    }
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    li {
+                        color: #ffffff;
+                        text-align: left;
+                        
+                    }
+                /* Highlighting Text  */
+                    ::-moz-selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+                    ::selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+                /* Scrolling Progress Bar */
+                    .progress {
+                        position: fixed;
+                        top: 0px;
+                        background-color: transparent;
+                        width: 100vw;
+                        height: 1rem;
+                    }
+                        .fill {
+                            background-color: #536e88;
+                            width: 40px;
+                            height: 100%;
+                        }
+                /* Scroll Bar*/
+                    ::-webkit-scrollbar {
+                        width: 12px;
+                    }
+                        ::-webkit-scrollbar-track {
+                            background: #1a1c20; 
+                        }
+                        ::-webkit-scrollbar-thumb {
+                            background: #4F759B; 
+                        }
+                        ::-webkit-scrollbar-thumb:hover {
+                            background: #0e0e0e; 
+                        }
+                /* Back to The Top Button */
+                    #myBtn {
+                        display: none;
+                        position: fixed;
+                        bottom: 20px;
+                        right: 30px;
+                        z-index: 99;
+                        font-size: 15px;
+                        border: none;
+                        outline: none;
+                        background-color: #4F759B;
+                        color: #0e0e0e;
+                        cursor: pointer;
+                        padding: 15px;
+                        border-radius: 75px;
+                        opacity: 0.6;
+                        transition: 0.3s;
+                    }
+                    #myBtn:hover{
+                        background-color: #f1f1f1;
+                        opacity: 1;
+                        box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                        transform: translateY(-0.70em);
+                    }
+                /* Page Elements */
+                    .Enter-Room{
+                        text-align: left;
+                        margin-bottom: 1.3%;
+                    }
+                    .Enter-Room h1 {
+                        text-align: left;
+                    }
+                        .Enter-Room p{
+                            color: #ffffff;
+                            font-size: 20px;
+                        }
+                        .Enter-Room a{
+                            text-decoration:dashed;
+                        }
+                        .Enter-Room hr {
+                            margin-top: 55px;
+                            margin-bottom: 35px;
+                        }
+                    pre {
+                        margin-bottom: 50px;
+                        background: rgba(0,0,0,0.9);
+                        border: 1px solid rgba(255,255,255,0.15);
+                        padding: 15px;
+                        font-size: 16px;
+                        color: #d0d0d0;
+                        border-radius: 2px;
+                        text-wrap: normal;
+                        overflow: auto;
+                        overflow-y: auto;
+                        overflow-y: hidden;
+                    }
+                        code.text{
+                            background: rgba(0,0,0,0.9);
+                            border: 1px solid rgba(255,255,255,0.15);
+                            padding: 0px 3px;
+                            margin: 0px -3px;
+                            color: white;
+                            border-radius: 2px;
+                        }
+                    .Top{
+                        font-size: 200%;
+                        margin-top: 20px;
+                        margin-bottom: -45px;
+                    }
+                        .Top h1{
+                            color:#fff;
+                            text-align: center;
+                        }
+                        .LowerHR {
+                            margin-bottom: 20px;
+                            max-width: 100%;
+                        }
+                    .Information_Gathering h1 {
+                        text-align:left;
+                        margin-bottom: 0%;   
+                        font-size: 30px;
+              
+                    }
+                        .Information_Gathering p{
+                            text-align:left;
+                            color: #ffffff;
+                            min-width: 100%;
+                            font-size: 19px;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            margin-top: 30px;
+                            margin-right: 0px;
+                            margin-bottom: 30px;
+                            margin-left: 0px;
+                        }
+                        .Information_Gathering a {
+                            color: #31538a;
+                        }
+                        .Information_Gathering b{
+                            text-align:left;
+                            color: #ffffff;
+                            min-width: 100%;
+                            font-size: 19px;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            margin-top: 30px;
+                            margin-right: 0px;
+                            margin-bottom: 30px;
+                            margin-left: 0px;
+                        }
+                    .Writeup h1{
+                        text-align:left;
+                        font-size: 30px;
+                    }
+                        .Writeup h3{
+                            font-size: 30px;
+                            color: #990D35;
+                        }
+                        .Writeup p{
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Writeup a {
+                            text-decoration: underline;
+                        }
+                        .Writeup li{
+                            list-style-type: none;
+                            margin-top: 15px;
+                        }
+                    .Question {
+                        border-left-color: var(--wp--preset--color--primary);
+                        border-left-color: #406dcf;
+                        border-left-style: solid;
+                        /*margin: 0 0 1.75em;
+                        margin-bottom: 1.75em;*/
+                        padding-left: 1em;
+                    }
+                        cite {
+                            color: #fff;
+                        }                         
+                    .Machine_Information h1 {
+                        text-align:left;
+                        font-size: 30px;
+                    }
+                        .Machine_Information p{ 
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Machine_Information a {
+                            text-decoration: underline;
+                        }
+                    /* A Element Hovering Effect */
+                    a.text:hover, a.text:active {
+                        color:#4F759B;
+                    }
+                /* Image Elements */
+                    img {
+                        max-width: 100%;
+                        height: 100%;
+                        border-radius: 5px;
+                        object-fit: contain;
+                    }
+                /* Congratulations Section */
+                    .Congrats h1{
+                        text-align:left;
+                        font-size: 30px;
+                        color: #4F759B;
+                    }
+                        .Congrats p {
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Congrats hr{
+                        color:#212936;
+                        max-width: 100%;
+                        }
+                        .Congrats img {
+                            max-width: 100%;
+                            height: 100%;
+                            border-radius: 5px;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            margin: 30px 0;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .UpperHR{
+                            margin-top: 20px;
+                        }           
+                /*Navigation Bar */
+                nav {
+                    height: 6rem;
+                    width: 98.9vw;
+                    background-color: #131418;
+                    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+                    display: flex;
+                    position: sticky;
+                    z-index: 10;
+                }
+                    .nav-links{
+                        display: flex;
+                        list-style: none; 
+                        width: 88vw;
+                        padding: 0 0.7vw;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        text-transform: uppercase;
+                    }
+                    .nav-links li a{
+                        text-decoration: none;
+                        margin: 0 0.7vw;
+                        overflow: hidden;
+                        background: linear-gradient(to right, #427ebb, #427ebb 50%, #ffffff 50%);
+                        transition: background-position 275ms ease;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: none;
+                        background-size: 200% 100%;
+                        background-position: 100%;
+                        text-decoration: none;
+                    }
+                    .nav-links li a:hover {
+                        color: #4F759B;
+                        background-position: 0 100%;
+                    }
+                    .nav-links li {
+                        position: relative;
+                    }
+                    .nav-links li a::before {
+                        content: "";
+                        display: block;
+                        width: 0%;
+                        background-color: #4F759B;
+                        position: absolute;
+                                       
+                    }
+                    .nav-links li a:hover::before{
+                        width: 80%;
+                    }
+                    /* JS Hamburger Icon*/
+                        .hamburger div{
+                            width: 30px;
+                            height:3px;
+                            background: #f2f5f7;
+                            margin: 5px;
+                            transition: all 0.3s ease;
+                        }
+                            .hamburger{
+                                display: none;
+                            }
+                    /* Responsive Menu*/
+                        @media screen and (max-width: 800px){
+                            nav{
+                                position: sticky;
+                                z-index: 3;
+                            }
+                            .hamburger{
+                                display:block;
+                                position: absolute;
+                                cursor: pointer;
+                                right: 5%;
+                                top: 50%;
+                                transform: translate(-5%, -50%);
+                                z-index: 2;
+                                transition: all 0.7s ease;
+                            }
+                            .nav-links{
+                                position: fixed;
+                                background: #131418;
+                                height: 100vh;
+                                width: 100%;
+                                flex-direction: column;
+                                clip-path: circle(50px at 90% -20%);
+                                -webkit-clip-path: circle(50px at 90% -10%);
+                                transition: all 1s ease-out;
+                                pointer-events: none;
+                            }
+                            .nav-links.open{
+                                clip-path: circle(1000px at 90% -10%);
+                                -webkit-clip-path: circle(1000px at 90% -10%);
+                                pointer-events: all;
+                            }
+                            .nav-links li{
+                                opacity: 0;
+                            }
+                            .nav-links li:nth-child(1){
+                                transition: all 0.5s ease 0.2s;
+                            }
+                            .nav-links li:nth-child(2){
+                                transition: all 0.5s ease 0.4s;
+                            }
+                            .nav-links li:nth-child(3){
+                                transition: all 0.5s ease 0.6s;
+                            }
+                            .nav-links li:nth-child(4){
+                                transition: all 0.5s ease 0.7s;
+                            }
+                            .nav-links li:nth-child(5){
+                                transition: all 0.5s ease 0.8s;
+                            }
+                            .nav-links li:nth-child(6){
+                                transition: all 0.5s ease 0.9s;
+                                margin: 0;
+                            }
+                            .nav-links li:nth-child(7){
+                                transition: all 0.5s ease 1s;
+                                margin: 0;
+                            }
+                            li.fade{
+                                opacity: 1;
+                            }
+                        }
+                    /* Hamburger Animation*/
+                        .toggle .line1{
+                            transform: rotate(-45deg) translate(-5px,6px);
+                        }
+                        .toggle .line2{
+                            transition: all 0.7s ease;
+                            width:0;
+                        }
+                        .toggle .line3{
+                            transform: rotate(45deg) translate(-5px,-6px);
+                        }
+                /* Read Other Post Element */
+                    .new_article {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-pack: justify;
+                        -ms-flex-pack: justify;
+                        justify-content: space-between;
+                        margin-bottom: 50px;
+                        filter: brightness(75%);
+                    }                    
+                        .new_article a:first-child {
+                            margin-right: 4%;
+                        }
+                        .new_article .next, .new_article .previous {
+                            position: relative;
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: end;
+                            -ms-flex-align: end;
+                            align-items: flex-end;
+                            width: 100%;
+                            min-height: 230px;
+                            padding: 0 25px 25px;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            transition: transform .2s,-webkit-transform .2s;
+                            -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                            box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-color: #0a0a0a;
+                        }
+                        .new_article .next .next_article, .new_article .previous .next_article {
+                            margin-bottom: 0;
+                            font-size: 21px;
+                            color: #ffff;
+                        }
+                        .new_article a:last-child {
+                            margin-right: 0;
+                        }
+                        .new_article .next {
+                            text-align: right;
+                            margin-left: auto;
+                        }
+                        .new_article .next .nav, .new_article .previous .navigation {
+                            display: inline-block;
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            font-family: Poppins,Arial,sans-serif;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: rgba(255,255,255,.8);
+                        }
+                        .new_article .next .new , .new_article .previous .new {
+                            position: relative;
+                            z-index: 1;
+                            width: 100%;
+                        }
+                        .new_article .next .next_article, .new_article .previous .next_article {
+                            margin-bottom: 0;
+                            font-size: 21px;
+                        }
+                        .new_article .next .navigation, .new_article .previous .navigation {
+                            display: inline-block;
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            font-family: Poppins,Arial,sans-serif;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: rgba(255,255,255,.8);
+                        }
+                        /* Hover Effect */
+                        .previous:hover {
+                            box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                            transform: translateY(-0.70em);
+                        }
+                            .next:hover {
+                                box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                                transform: translateY(-0.70em);
+                            }
+                            .new:hover {
+                                box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                                transform: translateY(-0.70em);
+                            }
+                /* Page Structure */
+                    .container {
+                        width: 90%;
+                        max-width: 1000px;
+                        margin: 0 auto;
+                    }
+                    .container p {
+                        text-align: left;
+                    }
+                    .container li {
+                        text-align: left;
+                    }
+                /* Main Starter Image */
+                    .image-box {
+                        position: relative;
+                        padding-top: 50%;
+                        border-radius: 30px;
+                        overflow: hidden;
+                        -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                        box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                        background-color: #0a0a0a;
+                    }
+                        .post-image {
+                            position: absolute;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            -o-object-fit: cover;
+                            object-fit: cover;
+                            -webkit-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                        }
+                        section {
+                            display: block;
+                            margin: 0 0 20px 0;
+                        }
+                        .col-12 {
+                            width: 100%;
+                        }
+                        .col {
+                            padding-left: 15px;
+                            padding-right: 15px;
+                        }
+                /* Table of Contents */
+                    .Table h1 {
+                        text-align: left;
+                    }
+                        .Table a {
+                        min-width: 100%;
+                        font-size: 20px;
+                        text-align:left;
+                        color: #ffffff;
+                        line-height: 1.8;
+                        margin: 0 0 10px;
+                        margin-top: 30px;
+                        margin-right: 0px;
+                        margin-bottom: 30px;
+                        margin-left: 0px;
+                        -webkit-transition: all .2s;
+                        -o-transition: all .2s;
+                        transition: all .2s;
+                        transition-property: all;
+                        transition-duration: 0.2s;
+                        transition-timing-function: ease;
+                        transition-delay: 0s;
+                        }   
+                            .Table a:hover {
+                                background-color: #0E273C;
+                                margin-left:-20px;
+                                padding-left:20px;
+                                padding-right:20px;                    
+                            }
+                        .Table li {
+                            list-style-type: none;
+                        }
+                /* Name/Time/Reading Section */
+                    .Name {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        -ms-flex-wrap: wrap;
+                        flex-wrap: wrap;
+                        -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                        justify-content: center;
+                        color: #fff;
+                    }   
+                        .Author {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            align-items: center;
+                        }
+                        .Author_Link {
+                            font-size: 17px;
+                            text-decoration: underline;
+                            color: #fff;
+                        }
+                        .Date {
+                            font-size: 17px;
+                            color: #fff;
+                            margin-left: 8px;
+                        }
+                /* Fixed Footer */
+                .footer {
+                    overflow: hidden;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: #374A67;
+                    color: white;
+                    text-align: center;
+                }
+                    .footer p {
+                        text-align: center;
+                    }
+        </style>
+    </head>           
+    <body>
+        <!-- Navigation Bar-->
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/Navigation Bar/Home.html">Home</a></li>
+                <li><a href="/Navigation Bar/Writeups.html">Writeups</a></li>
+                <li><a href="/Navigation Bar/My Thoughts.html">My Thoughts</a></li>
+                <li><a href="/Navigation Bar/Bugs.html">Bug Bounties</a></li>
+                <li><a href="/Navigation Bar/Whoami.html">Whoami</a></li>
+            </ul>
+        </nav>
+
+        <!-- Progress Bar -->
+        <div id="progress" class="progress">
+            <div class="fill"></div>
+        </div>
+
+        <!-- Article Elements -->    
+        <div class="container">
+
+            <!-- Title-->
+            <div class="Top">
+                <h1> DC-6 </h1> 
+            </div>
+
+            <!-- HR Element -->
+            <div class="Enter-Room">
+                <hr>
+            </div>
+
+            <!-- Main Image -->
+            <div class="col col 12">
+                <div class="image-box">
+                    <img class="post-image" src="https://images.unsplash.com/photo-1570941144246-be8036e9ee55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fGRjJTIwYnVpbGRpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="DC Building">
+                </div>
+            </div>
+
+            <!-- Name + Date + Time To Read -->
+            <div class="Name">
+                <div class="Author">
+                    <a class="text" href="Whoami.html" class="Author_Link" target="Open Whoami Page"> Jomari Gee </a>
+                </div>
+                <span class="Date">● April 13 2021</span>
+                <span class="Date"><p>● 6 Minute Read</p></span>
+            </div>
+
+            <!-- Table Of Contents-->  
+            <div class="Table">
+                <h1> Table of Contents </h1>
+                <u1>
+                    <li><a href="#Machine Information"> ○ Machine Information</a></li>    
+                    <li><a href="#Scanning/Enumeration"> ○ Scanning/Enumeration </a></li>                   
+                    <li><a href="#Exploit WP Login"> ○ Exploit WP Login</a></li>
+                    <li><a href="#Reverse Shell"> ○ Reverse Shell</a></li>
+                    <li><a href="#Getting SSH Creds"> ○ Getting SSH Creds</a></li>
+                    <li><a href="#File Hijacking"> ○ File Hijacking</a></li>
+                    <li><a href="#Root Flag"> ○ Root Flag</a></li>
+                    <li><a href="#Finished"> ○ Finished</a></li>
+                </u1>
+            </div>
+
+        <!-- Machine Information -->
+        <div class="Machine_Information">
+            <h1 id="Machine Information"> Machine Information </h1>
+                <p> This machine like the last two in the DC series only requires you to get the root flag to complete this machine. DC-6 like DC-2 does need you to edit your host file, so that you can actually begin attacking the machine.</p>
+                <p> You can find this <a class="text" href=" https://www.vulnhub.com/entry/dc-6,315/" target="Go to the machine"> Machine Here</a></p>
+                <p> To add this machine to your host enter <pre><code>➜ subl /etc/hosts </code></pre>, you don't have to use Sublime, you can use any text editor you want. Once in your preferred text editor add the IP of the machine and <pre><code>➜ wordy </code></pre> next to it, then you're all set up.</p> 
+                    <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Adding%20Image%20To%20Hosts.png" alt="Adding Image To Hosts">
+                <p> Along with that this message or clue however you take it should be taken because I didn't. That definitely cost me some time when trying to break this box, time that I could've saved, so go ahead and develop that password file lol.       </p>
+                    <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Password%20File%20Hint.png" alt="Password File Hint">
+        </div>
+
+            <!-- Back To Top Button -->
+            <button onclick="topFunction()" id="myBtn" title="Go up">▲</button>
+
+            <!-- Article Content -->
+            <div class="Writeup">
+                <h1 id="Scanning/Enumeration">Scanning/Enumeration </h1>
+                    <p> Doing a basic Nmap scan, I get back just ports 22 and 80 being open. Nothing interesting yet about these ports, but I know that on 80 the WordPress site is sitting which is nice.</p>
+                        <pre><code>➜ nmap -A 192.168.1.188 -o nmap.txt</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Nmap%20Scan.png" alt="Nmap Scan"></a>
+                    <p> Running a Nmap vulnerable script scan is where things start to heat up. I'm told about the usual CSRF vulnerabilities as well as the location of the admin folder, which isn't a secret since this is WordPress. The cool part is I find potential service versions to exploit if need be along with the potential for an SQL injection. The best part is I now have a list of 5 different usernames for the application.</p>
+                        <pre><code>➜ nmap --script vuln 192.168.1.188 -o nmapvuln.txt</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Nmap%20Vulnerability%20Scan.png" alt="Nmap Vulnerability Scan">
+                    <p> My Gobuster scan didn't throw back anything more than I expected from a WordPress application, but its nice to have this as a reference though.</p>
+                        <pre><code>➜ gobuster dir -u 192.168.1.188 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -n -e -o dir.txt -x html,php -t 30</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Gobuster%20Scan.png" alt="Gobuster Scan">
+                <h1 id="Exploit WP Login">Exploit WP Login</h1>
+                    <p> Visiting the main domain there is nothing interesting on the home page or the contact page, but on the about us page something small stands out. They talk about their main developer jens, who was a username that popped back from the nmap vulnerable scan. This username may prove to be valuable later. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Main%20Page%20Login%20Hints.png" alt="Main Page Login Hints">
+                    <p> That was actually a rabbit hole that I fell down, trying to break in with just the username jens. That's a lesson for later is don't fall down the rabbit hole lol. </p> 
+                        <img src="https://i0.wp.com/78.media.tumblr.com/tumblr_lv38yki06E1qf8o9ho1_500.gif" alt="Rabbit Hole Gif">
+                    <p> To get out of that rabbit hole I created a file for the usernames called users.txt and then used that with the password list from earlier to get login creds for the WP application via WPScan. After letting the scan run for a good time, I get back a username and password!</p>
+                        <code class="text">wpscan --url http://wordy/wp-login.php -t 40 -U users.txt -P passwords.txt</code>    
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/WPS%20Login%20Credentials.png" alt="WPS Login Credentials">
+                <h1 id="Reverse Shell">Reverse Shell</h1>
+                    <p> Now that I'm logged into the application its time to find either a reverse shell or the path I need to go down for getting a reverse shell. Looking around I don't see things I'm used to seeing with a WordPress Application, such as themes. The only thing that stands out is the activity monitor plugin, which makes sense because their security plugins are what they bragged about on the home page. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Logged%20into%20WPS.png" alt="Logged into WPS">
+                    <p> I decided to pass that to searchsploit to see if anything was valuable with this system that I could exploit and there was, which is awesome! </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Searchsploit%20Exploit.png" alt="Searchsploit Exploit">
+                    <p> Before I could execute the file I had to change a few things, so that it could work. The necessary changes I made are in the picture below. Now once I go to the file and press the button, instead of creating a netcat listener on the victim machine, it creates one on my machine. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Changing%20the%20exploit%20up.png" alt="Changing the exploit up"/>
+                    <p> Then once everything was changed correctly and my netcat listener was set up I clicked the submit button, it worked giving me a shell.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Reverse%20Shell%20Button.png" alt="Reverse Shell Button"/>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Shell%20Caught.png" alt="Shell Caught"/>
+                <h1 id="Getting SSH Creds">Getting SSH Creds</h1>
+                    <p> Now that I'm in the system, I go to the home directory to see what users are there. I see the usernames that I had expected to be logged into the system, so time to check out each directory.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Expected%20Usernames%20Logged%20In.png" alt="Expected Usernames Logged In"/>
+                    <p> In Marks directory he has a text file called <code class="text">things-to-do.txt</code> which has a password for the user <code class="text">graham</code> who has already been set up in plaintext. This is perfect because I can use it to login to SSH.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Graham%20Password%20Found.png" alt="Graham Password Found"/>
+                    <p> The credentials found in mark's directory worked and I was able to login as the user graham's ssh session!</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/SSH%20Login%20as%20Graham.png" alt="SSH Login as Graham"/> 
+                <h1 id="File Hijacking">File Hijacking</h1>
+                    <p>Trying to immediately go for a privilege escalation I get told that to become root I don't need to enter a password and can run the <code class="text">backups.sh</code> file in <code class="text">jens</code> directory, so time to check that file out. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Jen%20Privelege%20Escalation.png" alt="Jen Privelege Escalation"/>
+                    <p>Looking at the file it is just a basic script to start the webserver, nothing that I can leverage. I think that this is a script that needs to modified so that I can become jens.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Jens%20Backup%20File.png" alt="Jens Backup File"/>
+                    <p>Checking out the files permissions and the group that I'm in <code class="text">(devs)</code> I can modify this script!</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Looking%20At%20Privs.png" alt="Looking At Privs"/>
+                    <p>I modified the script by taking out the tar call command and added in a call to bash.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Modifed%20Script.png" alt="Modifed Script"/>
+                    <p> Then I used the sudo perms to login as jens by running the modified backups.sh file.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Sudo%20as%20Jen.png" alt="Sudo as Jen"/>
+                <h3 id="Root Flag"></h3>
+                    <p> Now that I'm jens I see that to become root I don't need a password and can exploit the misconfiguration with nmap, so time to turn to GTFOBins.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/GTFOBins%20Help.png" alt="GTFOBins Help"/>
+                    <p> Thanks to GTFOBins I'm able to become root on this box! Next, all I do is navigate to the root folder and read the flag.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Nmap%20Sudo%20Upgrade.png" alt="Nmap Sudo Upgrade"/>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/VulnHub/DC-6/Root%20Flag.png" alt="Root Flag"/>
+            </div>
+
+            <!-- End of Article -->
+            <footer>
+                <!-- GIF-->
+                <div class="Congrats">
+                    <div class="UpperHR">
+                        <h1 id="Finished"> Finished </h1>
+                        <p> This was a fun machine with an easy entry point if you paid attention, but I didn't, so it took more time than I'd like to mention. All in all another great DC series VH box as usual. ☺ </p>
+                        <img src="https://i.gifer.com/150L.gif" alt="Happy Gif"/>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- New Article Selection -->
+                <div class="new_article">
+                    <a class="previous" href="/TryHackMe/TomGhost.html" style="background-image: url(https://images.unsplash.com/photo-1555755939-7bdfb21ae7fd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Z2hvc3QlMjBjYXR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60)" alt="Article Selection">
+                        <div class="new">
+                            <div class="navigation navigation__previous">< Prior Page</div>
+                                <h4 class="next_article">TryHackMe TomGhost</h4>
+                        </div>
+                    </a>
+                    <!-- Next Article-->
+                    <a class="next" href="/HackTheBox/Netmon.html" style="background-image: url(https://joshuacruz.dev/assets/images/htb/netmon/info_card.jpg)" alt="Article Selection">
+                        <div class="new">
+                            <div class="navigation navigation__next">Next Page > </div>
+                                <h4 class="next_article">HTB Netmon</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Footer Message -->
+                <div class="footer">
+                    <p> Site built by me :)</p>
+                </div>
+            </footer>
+
+            <!-- JS Code -->
+            <script>
+                // Navigation Bar 
+                const hamburger = document.querySelector(".hamburger");
+                    const navLinks = document.querySelector(".nav-links");
+                    const links = document.querySelectorAll(".nav-links li");
+                    
+                    hamburger.addEventListener('click', ()=>{
+                        //Animate Links
+                        navLinks.classList.toggle("open");
+                        links.forEach(link => {
+                            link.classList.toggle("fade");
+                        });
+                    
+                        //Hamburger Animation
+                        hamburger.classList.toggle("toggle");
+                    });                             
+                // Back To The Top Button 
+                    var mybutton = document.getElementById("myBtn");
+                        window.onscroll = function() {scrollFunction()};
+                        function scrollFunction() {
+                            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                                mybutton.style.display = "block";
+                                } else {
+                                mybutton.style.display = "none";
+                            }
+                        }
+                        function topFunction() {
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                    }
+                // Progress Bar 
+                    const progressBar = document.getElementById("progress");
+                    const progressFill = progressBar.firstElementChild;
+                    window.addEventListener("scroll", () => {
+                        updateProgress();
+                    });
+                    function updateProgress() {
+                        let width = progressBar.clientWidth;
+                        let progress =
+                            window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
+                        // fill progress bar
+                        progressFill.style.width = Math.ceil(100 * progress) + "%";
+                    }
+                    updateProgress();
+            </script>
+        </div>
+    </body>
+</html>
