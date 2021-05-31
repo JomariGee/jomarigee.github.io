@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+    <head>
+        <title> YouTube | Jomari Gee </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicons/Favicon(2).png"/>
+        <style> 
+            body,html {
+                height: 100%;
+                margin:0;
+                font-family:Arial;
+                background: #0e0e0e;
+            }
+            /* Text Customization */  
+                a {
+                    color: inherit;
+                }   
+            /* Navigation Bar */
+            nav {
+                height: 6rem;
+                width: 98.9vw;
+                background-color: #131418;
+                box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+                display: flex;
+                position: sticky;
+                z-index: 10;
+            }
+                .nav-links{
+                    display: flex;
+                    list-style: none; 
+                    width: 88vw;
+                    padding: 0 0.7vw;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    text-transform: uppercase;
+                }
+                .nav-links li a{
+                    color: transparent;
+                    text-decoration: none;
+                    margin: 0 0.7vw;
+                    overflow: hidden;
+                    background: linear-gradient(to right, #427ebb, #427ebb 50%, #ffffff 50%);
+                    transition: background-position 275ms ease;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: none;
+                    background-size: 200% 100%;
+                    background-position: 100%;
+                    text-decoration: none;
+                }
+                .nav-links li a:hover {
+                    color: #4F759B;
+                    background-position: 0 100%;
+                }
+                .nav-links li {
+                    position: relative;
+                }
+                .nav-links li a::before {
+                    content: "";
+                    display: block;
+                    width: 0%;
+                    background-color: #4F759B;
+                    position: absolute;
+                                    
+                }
+                .nav-links li a:hover::before{
+                    width: 80%;
+                }
+                /* JS Hamburger Icon*/
+                    .hamburger div{
+                        width: 30px;
+                        height:3px;
+                        background: #f2f5f7;
+                        margin: 5px;
+                        transition: all 0.3s ease;
+                    }
+                        .hamburger{
+                            display: none;
+                        }
+                /* Responsive Menu*/
+                    @media screen and (max-width: 800px){
+                        nav{
+                            position: sticky;
+                            z-index: 3;
+                        }
+                        .hamburger{
+                            display:block;
+                            position: absolute;
+                            cursor: pointer;
+                            right: 5%;
+                            top: 50%;
+                            transform: translate(-5%, -50%);
+                            z-index: 2;
+                            transition: all 0.7s ease;
+                        }
+                        .nav-links{
+                            position: fixed;
+                            background: #131418;
+                            height: 100vh;
+                            width: 100%;
+                            flex-direction: column;
+                            clip-path: circle(50px at 90% -20%);
+                            -webkit-clip-path: circle(50px at 90% -10%);
+                            transition: all 1s ease-out;
+                            pointer-events: none;
+                        }
+                        .nav-links.open{
+                            clip-path: circle(1000px at 90% -10%);
+                            -webkit-clip-path: circle(1000px at 90% -10%);
+                            pointer-events: all;
+                        }
+                        .nav-links li{
+                            opacity: 0;
+                        }
+                        .nav-links li:nth-child(1){
+                            transition: all 0.5s ease 0.2s;
+                        }
+                        .nav-links li:nth-child(2){
+                            transition: all 0.5s ease 0.4s;
+                        }
+                        .nav-links li:nth-child(3){
+                            transition: all 0.5s ease 0.6s;
+                        }
+                        .nav-links li:nth-child(4){
+                            transition: all 0.5s ease 0.7s;
+                        }
+                        .nav-links li:nth-child(5){
+                            transition: all 0.5s ease 0.8s;
+                        }
+                        .nav-links li:nth-child(6){
+                            transition: all 0.5s ease 0.9s;
+                            margin: 0;
+                        }
+                        .nav-links li:nth-child(7){
+                            transition: all 0.5s ease 1s;
+                            margin: 0;
+                        }
+                        li.fade{
+                            opacity: 1;
+                        }
+                    }
+                /* Hamburger Animation*/
+                    .toggle .line1{
+                        transform: rotate(-45deg) translate(-5px,6px);
+                    }
+                    .toggle .line2{
+                        transition: all 0.7s ease;
+                        width:0;
+                    }
+                    .toggle .line3{
+                        transform: rotate(45deg) translate(-5px,-6px);
+                    }
+            /* Fixed Footer */
+                .footer {
+                    overflow: hidden;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: #374A67;
+                    color: white;
+                    text-align: center;
+                }
+                    .footer p {
+                        text-align: center;
+                    }
+            /* Background Image */
+                .bg-image {
+                    background-image: url("https://www.tecoit.com/wp-content/uploads/2020/10/youtube-di-Te.Co_..png");
+                    filter: blur(8px);
+                    -webkit-filter: blur(8px);
+                    height: 100%; 
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    }
+            /* Text over image */
+                .bg-text {
+                    background-color: rgb(0,0,0); 
+                    background-color: rgba(0,0,0, 0.4); 
+                    color: white;
+                    font-weight: bold;
+                    border: 3px solid #f1f1f1;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 2;
+                    width: 50%;
+                    padding: 20px;
+                    text-align: center;
+                    margin-top: 56px;
+                }
+        </style>
+    </head> 
+    <body>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/Navigation Bar/Home.html">Home</a></li>
+                <li><a href="/Navigation Bar/Writeups.html">Writeups</a></li>
+                <li><a href="/Navigation Bar/YouTube.html">YouTube</a></li>
+                <li><a href="/Navigation Bar/Bugs.html">Bug Bounties</a></li>
+                <li><a href="/Navigation Bar/Whoami.html">Whoami</a></li>
+            </ul>
+        </nav>
+
+        <!-- Background Image -->
+        <div class="bg-image"></div>
+        <div class="bg-text">
+            <a href="https://www.youtube.com/channel/UC3BBhcJywegZDXDyT1zjTIw"style="font-size:50px"> Check Me Out</a>
+        </div>
+        
+        <!-- Footer Message -->
+        <footer>
+            <div class="footer">
+                <p> Site built by me :)</p>
+            </div>
+        </footer>
+
+        <!-- JS Code-->
+        <script>
+
+            //Navigation Bar 
+            const hamburger = document.querySelector(".hamburger");
+                const navLinks = document.querySelector(".nav-links");
+                const links = document.querySelectorAll(".nav-links li");
+                // Hamburger Effect
+                hamburger.addEventListener('click', ()=>{
+                //Animate Links
+                navLinks.classList.toggle("open");
+                links.forEach(link => {
+                    link.classList.toggle("fade");
+                });
+    
+                //Hamburger Animation
+                hamburger.classList.toggle("toggle");
+            });
+
+        </script>
+    </body>
+</html>
