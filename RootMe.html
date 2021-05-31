@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+    <head>
+        <title> TryHackMe | RootMe </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicons/Favicon(2).png"/>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            /* Page Elements */
+                body {
+                    margin:0;
+                    font-family:Arial;
+                    background: #0e0e0e;
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-rendering: optimizeLegibility;
+                }
+                    body,html {
+                    padding: 0;
+                    margin: 0;
+                    display:block;
+                    flex-direction: column;
+                    }
+                /*Text Customization */
+                    h1 {
+                        color: #4F759B;
+                        text-align: center;
+                    }
+                    h2 {
+                        color: #4F759B;
+                    }
+                    h3 {
+                        color: #ffffff;
+                    }
+                    h6 {
+                        color: #4F759B;
+                    }
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    li {
+                        color: #ffffff;
+                        text-align: left;
+                        
+                    }
+                /* Highlighting Text  */
+                    ::-moz-selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+                    ::selection {
+                        color: white;
+                        background: #4F759B;
+                    }
+                /* Scrolling Progress Bar */
+                    .progress {
+                        position: fixed;
+                        top: 0px;
+                        background-color: transparent;
+                        width: 100vw;
+                        height: 1rem;
+                    }
+                        .fill {
+                            background-color: #536e88;
+                            width: 40px;
+                            height: 100%;
+                        }
+                /* Scroll Bar*/
+                    ::-webkit-scrollbar {
+                        width: 12px;
+                    }
+                        ::-webkit-scrollbar-track {
+                            background: #1a1c20; 
+                        }
+                        ::-webkit-scrollbar-thumb {
+                            background: #4F759B; 
+                        }
+                        ::-webkit-scrollbar-thumb:hover {
+                            background: #0e0e0e; 
+                        }
+                /* Back to The Top Button */
+                    #myBtn {
+                        display: none;
+                        position: fixed;
+                        bottom: 20px;
+                        right: 30px;
+                        z-index: 99;
+                        font-size: 15px;
+                        border: none;
+                        outline: none;
+                        background-color: #4F759B;
+                        color: #0e0e0e;
+                        cursor: pointer;
+                        padding: 15px;
+                        border-radius: 75px;
+                        opacity: 0.6;
+                        transition: 0.3s;
+                    }
+                    #myBtn:hover{
+                        background-color: #f1f1f1;
+                        opacity: 1;
+                        box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                        transform: translateY(-0.70em);
+                    }
+                /* Page Elements */
+                    .Enter-Room{
+                        text-align: left;
+                        margin-bottom: 1.3%;
+                    }
+                    .Enter-Room h1 {
+                        text-align: left;
+                    }
+                        .Enter-Room p{
+                            color: #ffffff;
+                            font-size: 20px;
+                        }
+                        .Enter-Room a{
+                            text-decoration:dashed;
+                        }
+                        .Enter-Room hr {
+                            margin-top: 55px;
+                            margin-bottom: 35px;
+                        }
+                        
+                    pre {
+                        margin-bottom: 50px;
+                        background: rgba(0,0,0,0.9);
+                        border: 1px solid rgba(255,255,255,0.15);
+                        padding: 15px;
+                        font-size: 16px;
+                        color: #d0d0d0;
+                        border-radius: 2px;
+                        text-wrap: normal;
+                        overflow: auto;
+                        overflow-y: auto;
+                        overflow-y: hidden;
+                    }
+                        code.text{
+                            background: rgba(0,0,0,0.9);
+                            border: 1px solid rgba(255,255,255,0.15);
+                            padding: 0px 3px;
+                            margin: 0px -3px;
+                            color: white;
+                            border-radius: 2px;
+                        }
+                    .Top{
+                        font-size: 200%;
+                        margin-top: 20px;
+                        margin-bottom: -45px;
+                    }
+                        .Top h1{
+                            color:#fff;
+                            text-align: center;
+                        }
+                        .LowerHR {
+                            margin-bottom: 20px;
+                            max-width: 100%;
+                        }
+                    .Information_Gathering h1 {
+                        text-align:left;
+                        margin-bottom: 0%;   
+                        font-size: 30px;
+              
+                    }
+                        .Information_Gathering p{
+                            text-align:left;
+                            color: #ffffff;
+                            min-width: 100%;
+                            font-size: 19px;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            margin-top: 30px;
+                            margin-right: 0px;
+                            margin-bottom: 30px;
+                            margin-left: 0px;
+                        }
+                        .Information_Gathering a {
+                            color: #31538a;
+                        }
+                        .Information_Gathering b{
+                            text-align:left;
+                            color: #ffffff;
+                            min-width: 100%;
+                            font-size: 19px;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            margin-top: 30px;
+                            margin-right: 0px;
+                            margin-bottom: 30px;
+                            margin-left: 0px;
+                        }
+                    .Writeup h1{
+                        text-align:left;
+                        font-size: 30px;
+                    }
+                        .Writeup h3{
+                            font-size: 30px;
+                            color: #990D35;
+                        }
+                        .Writeup p{
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Writeup a {
+                            text-decoration: underline;
+                        }
+                        .Writeup li{
+                            list-style-type: none;
+                            margin-top: 15px;
+                        }
+                    .Question {
+                        border-left-color: var(--wp--preset--color--primary);
+                        border-left-color: #406dcf;
+                        border-left-style: solid;
+                        /*margin: 0 0 1.75em;
+                        margin-bottom: 1.75em;*/
+                        padding-left: 1em;
+                    }
+                        cite {
+                            color: #fff;
+                        }                         
+                    .Machine_Information h1 {
+                        text-align:left;
+                        font-size: 30px;
+                    }
+                        .Machine_Information p{ 
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Machine_Information a {
+                            text-decoration: underline;
+                        }
+                    /* A Element Hovering Effect */
+                    a.text:hover, a.text:active {
+                        color:#4F759B;
+                    }
+                /* Image Elements */
+                    img {
+                        max-width: 100%;
+                        height: 100%;
+                        border-radius: 5px;
+                        object-fit: contain;
+                    }
+                /* Congratulations Section */
+                    .Congrats h1{
+                        text-align:left;
+                        font-size: 30px;
+                        color: #4F759B;
+                    }
+                        .Congrats p {
+                            color: #ffffff;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            font-size: 20px;
+                            line-height: 2;
+                            margin: 30px 0;
+                            min-width: 100%;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .Congrats hr{
+                        color:#212936;
+                        max-width: 100%;
+                        }
+                        .Congrats img {
+                            max-width: 100%;
+                            height: 100%;
+                            border-radius: 5px;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            margin: 30px 0;
+                            padding: 0;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                        }
+                        .UpperHR{
+                            margin-top: 20px;
+                        }           
+                /*Navigation Bar */
+                nav {
+                    height: 6rem;
+                    width: 98.9vw;
+                    background-color: #131418;
+                    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+                    display: flex;
+                    position: sticky;
+                    z-index: 10;
+                }
+                    .nav-links{
+                        display: flex;
+                        list-style: none; 
+                        width: 88vw;
+                        padding: 0 0.7vw;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        text-transform: uppercase;
+                    }
+                    .nav-links li a{
+                        text-decoration: none;
+                        margin: 0 0.7vw;
+                        overflow: hidden;
+                        background: linear-gradient(to right, #427ebb, #427ebb 50%, #ffffff 50%);
+                        transition: background-position 275ms ease;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: none;
+                        background-size: 200% 100%;
+                        background-position: 100%;
+                        text-decoration: none;
+                    }
+                    .nav-links li a:hover {
+                        color: #4F759B;
+                        background-position: 0 100%;
+                    }
+                    .nav-links li {
+                        position: relative;
+                    }
+                    .nav-links li a::before {
+                        content: "";
+                        display: block;
+                        width: 0%;
+                        background-color: #4F759B;
+                        position: absolute;
+                                       
+                    }
+                    .nav-links li a:hover::before{
+                        width: 80%;
+                    }
+                    /* JS Hamburger Icon*/
+                        .hamburger div{
+                            width: 30px;
+                            height:3px;
+                            background: #f2f5f7;
+                            margin: 5px;
+                            transition: all 0.3s ease;
+                        }
+                            .hamburger{
+                                display: none;
+                            }
+                    /* Responsive Menu*/
+                        @media screen and (max-width: 800px){
+                            nav{
+                                position: sticky;
+                                z-index: 3;
+                            }
+                            .hamburger{
+                                display:block;
+                                position: absolute;
+                                cursor: pointer;
+                                right: 5%;
+                                top: 50%;
+                                transform: translate(-5%, -50%);
+                                z-index: 2;
+                                transition: all 0.7s ease;
+                            }
+                            .nav-links{
+                                position: fixed;
+                                background: #131418;
+                                height: 100vh;
+                                width: 100%;
+                                flex-direction: column;
+                                clip-path: circle(50px at 90% -20%);
+                                -webkit-clip-path: circle(50px at 90% -10%);
+                                transition: all 1s ease-out;
+                                pointer-events: none;
+                            }
+                            .nav-links.open{
+                                clip-path: circle(1000px at 90% -10%);
+                                -webkit-clip-path: circle(1000px at 90% -10%);
+                                pointer-events: all;
+                            }
+                            .nav-links li{
+                                opacity: 0;
+                            }
+                            .nav-links li:nth-child(1){
+                                transition: all 0.5s ease 0.2s;
+                            }
+                            .nav-links li:nth-child(2){
+                                transition: all 0.5s ease 0.4s;
+                            }
+                            .nav-links li:nth-child(3){
+                                transition: all 0.5s ease 0.6s;
+                            }
+                            .nav-links li:nth-child(4){
+                                transition: all 0.5s ease 0.7s;
+                            }
+                            .nav-links li:nth-child(5){
+                                transition: all 0.5s ease 0.8s;
+                            }
+                            .nav-links li:nth-child(6){
+                                transition: all 0.5s ease 0.9s;
+                                margin: 0;
+                            }
+                            .nav-links li:nth-child(7){
+                                transition: all 0.5s ease 1s;
+                                margin: 0;
+                            }
+                            li.fade{
+                                opacity: 1;
+                            }
+                        }
+                    /* Hamburger Animation*/
+                        .toggle .line1{
+                            transform: rotate(-45deg) translate(-5px,6px);
+                        }
+                        .toggle .line2{
+                            transition: all 0.7s ease;
+                            width:0;
+                        }
+                        .toggle .line3{
+                            transform: rotate(45deg) translate(-5px,-6px);
+                        }
+                /* Read Other Post Element */
+                    .new_article {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-pack: justify;
+                        -ms-flex-pack: justify;
+                        justify-content: space-between;
+                        margin-bottom: 50px;
+                        filter: brightness(75%);
+                    }                    
+                        .new_article a:first-child {
+                            margin-right: 4%;
+                        }
+                        .new_article .next, .new_article .previous {
+                            position: relative;
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: end;
+                            -ms-flex-align: end;
+                            align-items: flex-end;
+                            width: 100%;
+                            min-height: 230px;
+                            padding: 0 25px 25px;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            transition: transform .2s,-webkit-transform .2s;
+                            -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                            box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-color: #0a0a0a;
+                        }
+                        .new_article .next .next_article, .new_article .previous .next_article {
+                            margin-bottom: 0;
+                            font-size: 21px;
+                            color: #ffff;
+                        }
+                        .new_article a:last-child {
+                            margin-right: 0;
+                        }
+                        .new_article .next {
+                            text-align: right;
+                            margin-left: auto;
+                        }
+                        .new_article .previous {
+                            text-align: left;
+                            margin-left: auto;
+                        }
+                        .new_article .next .nav, .new_article .previous .navigation {
+                            display: inline-block;
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            font-family: Poppins,Arial,sans-serif;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: rgba(255,255,255,.8);
+                        }
+                        .new_article .next .new , .new_article .previous .new {
+                            position: relative;
+                            z-index: 1;
+                            width: 100%;
+                        }
+                        .new_article .next .next_article, .new_article .previous .next_article {
+                            margin-bottom: 0;
+                            font-size: 21px;
+                        }
+                        .new_article .next .navigation, .new_article .previous .navigation {
+                            display: inline-block;
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            font-family: Poppins,Arial,sans-serif;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: rgba(255,255,255,.8);
+                        }
+                        /* Hover Effect */
+                        .previous:hover {
+                            box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                            transform: translateY(-0.70em);
+                        }
+                            .next:hover {
+                                box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                                transform: translateY(-0.70em);
+                            }
+                            .new:hover {
+                                box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                                transform: translateY(-0.70em);
+                            }
+                /* Page Structure */
+                    .container {
+                        width: 90%;
+                        max-width: 1000px;
+                        margin: 0 auto;
+                    }
+                    .container p {
+                        text-align: left;
+                    }
+                    .container li {
+                        text-align: left;
+                    }
+                /* Main Starter Image */
+                    .image-box {
+                        position: relative;
+                        padding-top: 50%;
+                        border-radius: 30px;
+                        overflow: hidden;
+                        -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                        box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+                        background-color: #0a0a0a;
+                    }
+                        .post-image {
+                            position: absolute;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            -o-object-fit: cover;
+                            object-fit: cover;
+                            -webkit-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                        }
+                        section {
+                            display: block;
+                            margin: 0 0 20px 0;
+                        }
+                        .col-12 {
+                            width: 100%;
+                        }
+                        .col {
+                            padding-left: 15px;
+                            padding-right: 15px;
+                        }
+                /* Table of Contents */
+                    .Table h1 {
+                        text-align: left;
+                    }
+                        .Table a {
+                        min-width: 100%;
+                        font-size: 20px;
+                        text-align:left;
+                        color: #ffffff;
+                        line-height: 1.8;
+                        margin: 0 0 10px;
+                        margin-top: 30px;
+                        margin-right: 0px;
+                        margin-bottom: 30px;
+                        margin-left: 0px;
+                        -webkit-transition: all .2s;
+                        -o-transition: all .2s;
+                        transition: all .2s;
+                        transition-property: all;
+                        transition-duration: 0.2s;
+                        transition-timing-function: ease;
+                        transition-delay: 0s;
+                        }   
+                            .Table a:hover {
+                                background-color: #0E273C;
+                                margin-left:-20px;
+                                padding-left:20px;
+                                padding-right:20px;                    
+                            }
+                        .Table li {
+                            list-style-type: none;
+                        }
+                /* Name/Time/Reading Section */
+                    .Name {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        -ms-flex-wrap: wrap;
+                        flex-wrap: wrap;
+                        -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                        justify-content: center;
+                        color: #fff;
+                    }   
+                        .Author {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            align-items: center;
+                        }
+                        .Author_Link {
+                            font-size: 17px;
+                            text-decoration: underline;
+                            color: #fff;
+                        }
+                        .Date {
+                            font-size: 17px;
+                            color: #fff;
+                            margin-left: 8px;
+                        }
+                /* Fixed Footer */
+                .footer {
+                    overflow: hidden;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: #374A67;
+                    color: white;
+                    text-align: center;
+                }
+                    .footer p {
+                        text-align: center;
+                    }
+        </style>
+    </head>           
+    <body>
+        <!-- Navigation Bar-->
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/Navigation Bar/Home.html">Home</a></li>
+                <li><a href="/Navigation Bar/Writeups.html">Writeups</a></li>
+                <li><a href="/Navigation Bar/YouTube.html">YouTube</a></li>
+                <li><a href="/Navigation Bar/Bugs.html">Bug Bounties</a></li>
+                <li><a href="/Navigation Bar/Whoami.html">Whoami</a></li>
+            </ul>
+        </nav>
+
+        <!-- Progress Bar -->
+        <div id="progress" class="progress">
+            <div class="fill"></div>
+        </div>
+
+        <!-- Article Elements -->    
+        <div class="container">
+
+            <!-- Title-->
+            <div class="Top">
+                <h1> RootMe </h1> 
+            </div>
+
+            <!-- HR Element -->
+            <div class="Enter-Room">
+                <hr>
+            </div>
+
+            <!-- Main Image -->
+            <div class="col col 12">
+                <div class="image-box">
+                    <img class="post-image" src="https://images.unsplash.com/photo-1549605659-32d82da3a059?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RootMe Image">
+                </div>
+            </div>
+
+            <!-- Name + Date + Time To Read -->
+            <div class="Name">
+                <div class="Author">
+                    <a class="text" href="Whoami.html" class="Author_Link" target="Open Whoami Page"> Jomari Gee </a>
+                </div>
+                <span class="Date">● Nov 17 2020</span>
+                <span class="Date"><p>● 3 Minute Read</p></span>
+            </div>
+
+            <!-- Table Of Contents-->  
+            <div class="Table">
+                <h1> Table of Contents </h1>
+                <u1>
+                    <li><a href="#Machine Information"> ○ Machine Information</a></li>    
+                    <li><a href="#Information Gathering"> ○ Information Gathering</a></li>                               
+                    <li><a href="#Scanning/Enumeration"> ○ Scanning/Enumeration </a></li>                   
+                    <li><a href="#Reverse Shell"> ○ Reverse Shell</a></li>
+                    <li><a href="#User Flag"> ○ User Flag </a></li>
+                    <li><a href="#Root Flag"> ○ Root Flag</a></li>
+                    <li><a href="#Finished"> ○ Finished</a></li>
+                </u1>
+            </div>
+
+        <!-- Machine Information -->
+        <div class="Machine_Information">
+            <h1 id="Machine Information"> Machine Information </h1>
+                <p> RootMe is a CTF style box for beginners, with the goal of having you gain root access to the machine.</p>
+                <p> You can Join this <a class="text" href="https://tryhackme.com/room/rrootme" target="Go to the machine">TryHackMe Machine Here</a></p>
+        </div>
+
+        <!-- IP Section -->
+        <div class="Information_Gathering">
+            <h1 id="Information Gathering"> Information Gathering </h1>
+                <p> The target IP address is provided when the machine is deployed. </p>
+                <p> <b>Target: </b> 10.10.44.224</p>
+        </div>
+
+            <!-- Back To Top Button -->
+            <button onclick="topFunction()" id="myBtn" title="Go up">▲</button>
+
+            <!-- Article Content -->
+            <div class="Writeup">
+                <h1 id="Scanning/Enumeration">Scanning/Enumeration </h1>
+                    <p> Running a standard Nmap scan on the target I get back only two ports, but they're pretty standard. The normal SSH port is open and there is a website 
+                        on port 80. So I'll run a gobuster scan for more enumeration on the target. </p>
+                        <pre><code>➜ nmap -A 10.10.44.224  </code></pre>
+                        <blockquote class="Question">
+                            <p>1. Scan the machine, how many ports are open?</p>
+                            <cite>Answer: 2</cite>
+                        </blockquote>
+                        <blockquote class="Question">
+                            <p>2. What version of Apache is running?</p>
+                            <cite>Answer: 2.4.29</cite>
+                        </blockquote>
+                        <blockquote class="Question">
+                            <p>3. What service is running on port 22?</p>
+                            <cite>Answer: ssh</cite>
+                        </blockquote>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Nmap%20Scan.png" alt="Nmap Scan"></a>
+                    <p>Looking at the scan we can see the following ports and services are open:</p>
+                        <ul>
+                            <li>● Port 22/tcp - SSH - (OpenSSH 7.6p1)</li>
+                            <li>● Port 80/tcp - HTTP - (httpd 2.4.29) </li>
+                        </ul>
+                    <p> I ran my Gobuster scan and at first nothing beyond the basic subdirectories had come back, but then a little bit later this directory <code class="text"> /panel </code>  
+                        came back. Which is the entry point that I needed as well as the answer to the "hidden directory" question.</p>
+                        <pre><code>➜ gobuster dir -u http://10.10.44.224 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -n -e -x php,html,txt -t 30 </code></pre>
+                            <blockquote class="Question">
+                                <p>4. What is the hidden directory?</p>
+                                <cite>Answer: /panel/</cite>
+                            </blockquote>
+                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Gobuster%20Scan.png" alt="Gobuster Scan">
+                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Panel%20Directory.png" alt="Panel Directory">
+                <h1 id="Reverse Shell">Reverse Shell</h1>
+                    <p> Browsing to the <code class="text"> /panel </code> sub directory. I see that it is a place to upload files, so this is possibly where my reverse shell will come into 
+                    play. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Upload%20Place.png" alt="Upload Place">
+                    <p> I tried using a standard .php file for the reverse shell, but it tossed back a nasty little error. It was in Portuguese, but translated into English its just "php is not
+                        allowed".</p> 
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/No%20Upload.png" alt="No Upload">
+                    <p> I wasn't sure how the files were restricted, so I uploaded a blank text file named trial.txt to test and see. Which it worked and I got back a green message saying
+                        the upload was a success.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Text%20Success.png" alt="Text Success">
+                    <p> So knowing that uploads do work, I modified my .php revere shell file to be a .php5 file. Knowing that it would have the same impact on the system. It worked, I got
+                        another successful upload. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/File%20Uploaded.png" alt="File Uploaded"/>
+                <h3 id="User Flag">User Flag</h3>
+                    <p> Now that I'm in the system, I upgraded my shell to a semi-proper TTY shell via python. Which is always fun, because it looks nicer.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/TTY%20Shell.png" alt="TTY Shell">
+                    <p> The user flag wasn't as easy to find as usual with most machines just requiring a list command. So I had to do a bit of googling on how the find command worked to find this user.txt 
+                        file. Which eventually it did work and the flag was found! </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Find%20Command.png" alt="Find Command">
+                        <blockquote class="Question">  
+                            <p>5. User.txt</p>
+                            <cite>Answer: T*******************</cite> 
+                        </blockquote>
+                        <pre><code>➜ find / -type f -name user.txt</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/User%20Flag.png" alt="User Flag"/>
+                <h3 id="Root Flag">Root Flag</h3>
+                    <p> I had run out of ideas on how to get root access on this box, so I figured I should try and exploit SUID privileges for root like suggested. After some more googling once
+                        I clicked on the hint I got a command to weed out all the errors for the find command. Which worked and bounced back all the files below.</p>
+                        <pre><code>➜ find / -type f -user root -perm -4000 2>/dev/null</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/SUID%20Files.png" alt="SUID Files"/>
+                    <p> After trying multiple files and combing through more information, I found the file that needed to be exploited. There are easier ways to find this out, I just hadn't known about 
+                        tools such as <a class="text" href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS" target="Go to LinPeas">LinPeas</a> yet.</p>
+                        <blockquote class="Question">
+                            <p>6. Search for files with SUID permission, which file is weird?</p>
+                            <cite>Answer: /usr/bin/python</cite>
+                        </blockquote>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Python%20File.png" alt="Python File"/> 
+                    <p> Now I took to the great tool, <a class="text" href="https://gtfobins.github.io/gtfobins/python/#sudo" target="Go to GTFO Bins">GTFO bins</a>, so I could understand how to exploit 
+                        this misconfiguration for root access. Which was a fairly simple python exploit. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/GTFO%20Bins.png" alt="GTFO Bins"/> 
+                    <p> Then after reading the exploit I copy and pasted it into the revere shell and had root access on the machine.</p>
+                        <pre><code>➜ python -c 'import os; os.execl("/bin/sh", "sh", "-p")' </code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Root%20Access.png" alt="Root Access"/>
+                    <p> Now with root access I didn't try to go into the root folder, but instead use the find command again. Which was overkill because the flag was in the root directory, 
+                        but nonetheless the box still got completed. </p>
+                        <blockquote class="Question">
+                            <p>7. root.txt</p>
+                            <cite>Answer: T***********************</cite>
+                        </blockquote>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/RootMe/Root%20Flag.png"alt="Root Flag"/>
+            </div>
+            <!-- End of Article -->
+            <footer>
+                <!-- GIF-->
+                <div class="Congrats">
+                    <div class="UpperHR">
+                        <h1 id="Finished"> Finished </h1>
+                        <p> This box was a fun challenge and a great introductory machine for reverse shells and privilege escalation.☺ </p>
+                        <img src="https://i.gifer.com/150L.gif" alt="Happy Gif"/>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- New Article Selection -->
+                <div class="new_article">
+                    <a class="previous" href="/TryHackMe/Gaming Server.html" style="background-image: url(https://images.unsplash.com/photo-1601406983793-a3d1510d12c8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)" alt="Article Selection">
+                        <div class="new">
+                            <div class="navigation navigation__previous">< Prior Page</div>
+                                <h4 class="next_article">TryHackMe Gaming Server</h4>
+                        </div>
+                    </a>
+                    <a class="next" href="/TryHackMe/Ignite.html" style="background-image: url(https://images.unsplash.com/photo-1587833982781-8a8cb5cc176b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)" alt="Article Selection">
+                        <div class="new">
+                            <div class="navigation navigation__next">Next Page > </div>
+                                <h4 class="next_article">TryHackMe Ignite</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Footer Message -->
+                <div class="footer">
+                    <p> Site built by me :)</p>
+                </div>
+            </footer>
+
+            <!-- JS Code -->
+            <script>
+                // Navigation Bar 
+                const hamburger = document.querySelector(".hamburger");
+                    const navLinks = document.querySelector(".nav-links");
+                    const links = document.querySelectorAll(".nav-links li");
+                    
+                    hamburger.addEventListener('click', ()=>{
+                        //Animate Links
+                        navLinks.classList.toggle("open");
+                        links.forEach(link => {
+                            link.classList.toggle("fade");
+                        });
+                    
+                        //Hamburger Animation
+                        hamburger.classList.toggle("toggle");
+                    });                             
+                // Back To The Top Button 
+                    var mybutton = document.getElementById("myBtn");
+                        window.onscroll = function() {scrollFunction()};
+                        function scrollFunction() {
+                            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                                mybutton.style.display = "block";
+                                } else {
+                                mybutton.style.display = "none";
+                            }
+                        }
+                        function topFunction() {
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                    }
+                // Progress Bar 
+                    const progressBar = document.getElementById("progress");
+                    const progressFill = progressBar.firstElementChild;
+                    window.addEventListener("scroll", () => {
+                        updateProgress();
+                    });
+                    function updateProgress() {
+                        let width = progressBar.clientWidth;
+                        let progress =
+                            window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
+                        // fill progress bar
+                        progressFill.style.width = Math.ceil(100 * progress) + "%";
+                    }
+                    updateProgress();
+            </script>
+        </div>
+    </body>
+</html>
