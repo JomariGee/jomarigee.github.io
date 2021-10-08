@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <head>
-        <title> Blueprint </title>
+        <title> Attacktive Directory  </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Favicons/Favicon(2).png"/>
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -672,7 +672,7 @@
 
             <!-- Title-->
             <div class="Top">
-                <h1> Blueprint </h1> 
+                <h1> Attacktive Directory  </h1> 
             </div>
 
             <!-- HR Element -->
@@ -683,7 +683,7 @@
             <!-- Main Image -->
             <div class="col col 12">
                 <div class="image-box">
-                    <img class="post-image" src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ymx1ZXByaW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Unsplash Image">
+                    <img class="post-image" src="https://images.unsplash.com/photo-1516617539902-51315fafbaa7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Unsplash Image">
                 </div>
             </div>
 
@@ -692,18 +692,20 @@
                 <div class="Author">
                     <a class="text" href="Whoami.html" class="Author_Link" target="Open Whoami Page"> Jomari Gee </a>
                 </div>
-                <span class="Date">● Oct 3 2021</span>
-                <span class="Date"><p>● 4 Minute Read</p></span>
+                <span class="Date">● Sep 30 2021</span>
+                <span class="Date"><p>● 5 Minute Read</p></span>
             </div>
 
             <!-- Table Of Contents-->  
             <div class="Table">
                 <h1> Table of Contents </h1>
                 <u1>                                             
-                    <li><a href="#Scanning/Enumeration"> ○ Scanning/Enumeration</a></li>
-                    <li><a href="#RCE"> ○ RCE</a></li>
-                    <li><a href="#Lab NTLM Hash"> ○ Lab NTLM Hash</a></li>
-                    <li><a href="#Root Flag"> ○ Root Flag</a></li>
+                    <li><a href="#Task 3"> ○ Task 3</a></li>
+                    <li><a href="#Task 4"> ○ Task 4</a></li>
+                    <li><a href="#Task 5"> ○ Task 5</a></li>
+                    <li><a href="#Task 6"> ○ Task 6</a></li>
+                    <li><a href="#Task 7"> ○ Task 7</a></li>
+                    <li><a href="#Task 8"> ○ Task 8</a></li>
                     <li><a href="#Finished"> ○ Finished</a></li>
                 </u1>
             </div>
@@ -714,27 +716,176 @@
 
             <!-- Article Content -->
             <div class="Writeup">
-                <h1 id="Scanning/Enumeration">Scanning/Enumeration </h1>
-                        <p> Looking at the nmap output from recon.sh the biggest thing that sticks out is port <code class="text">8080</code> because that's not usually something you see being open and the server output is weird to say the least. </p>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Nmap%20Output.png"alt="Nmap Output"/>
-                        <p> Going to visit this website I see mention of something called <code class="text">oscommerece-2.3.4</code>, which after further recon I discovered is a CMS, so naturally I passed it to searchsploit. There are two RCE's out there for this version, but I'll be using the second one, <code class="text">50128.py</code> </p>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Service%20Version%20Found.png"alt="Service Version Found"/>
-                    <h1 id="RCE">RCE </h1>
-                        <p>Using the <code class="text">50128.py</code> with the command below it shows that you are logged into the system as NT Authority at the begging which is awesome, no need to privilege escalate! </p>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Shell%20on%20System.png"alt="Shell on System"/>
-                        <p>That is cool, but there isn't much that can be done on the system just yet, so to get the NTLM hash for the user "Lab" we need to use mimikatze. I went to the location of mimikatz.exe and started a simple python web server then put mimikatz on the Windows machine.  </p>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Mimikatz%20Fun.png"alt="Mimikatz Fun"/>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Its%20on%20the%20system.png"alt="Its on the system"/>
-                    <h1 id="Lab NTLM Hash">Lab NTLM Hash </h1>
-                        <p> Using mimikatz I dump the NTLM hash for the users on this machine with the command below.</p>
-                        <pre><code>➜ .\mimikatz "lsadump::sam" exit</code></pre>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/NTLM%20Hash%20Dumping.png"alt="NTLM Hash Dumping"/>
-                        <p>Then using good ol CrackStation the NTLM hash for the user Lab is revealed. </p>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Crackstation%20Output.png"alt="Crackstation Output"/>
-                    <h1 id="Root Flag">Root Flag</h1>
-                        <p>Now to get the root flag I just had to go into the Admin's Desktop directory to retrieve it and finish this box off.  </p>
-                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Blueprint/Root%20Flag.png"alt="Root Flag"/>
-
+                <h1 id="Task 1">Task 3 </h1>
+                    <p> Question 1 </p>
+                        <blockquote class="Question">
+                            <p>What tool will allow us to enumerate port 139/445?</p>
+                            <cite>Answer: enum4linux</cite>
+                        </blockquote>
+                        <p> Using this tool because it's one of the best tools to enumerate these ports when you are on a Linux machine.</p>
+                    <p> Question 2 </p>
+                        <blockquote class="Question">
+                            <p>What is the NetBIOS-Domain Name of the machine?</p>
+                            <cite>Answer: THM-AD</cite>
+                        </blockquote>
+                        <p> Looking at the nmap scan done output below you can see the NETBIOS_Domain_Name answer. </p>
+                        <pre><code>➜ nmap -A 10.10.90.76</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Nmap%20Output.png"alt="Nmap Output"/>
+                    <p> Question 3 </p>
+                        <blockquote class="Question">
+                            <p>What invalid TLD do people commonly use for their Active Directory Domain?</p>
+                            <cite>Answer: .local</cite>
+                        </blockquote>
+                        <p> Using the output from that same scan above you can see the directories domain name as .local for the answer.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Domain%20Address.png"alt="Domain Address"/>
+                <h1 id="Task 4">Task 4 </h1>
+                    <p> Question 1 </p>
+                        <blockquote class="Question">
+                            <p>What command within Kerbrute will allow us to enumerate valid usernames?</p>
+                            <cite>Answer: userenum</cite>
+                        </blockquote>
+                        <p> First I downloaded the author's GitHub <a href="https://github.com/Sq00ky/attacktive-directory-tools" target="Go to the repo"> repo</a> in order to get the challenge started. Then I used the <code class="text">-h</code> switch to get help with the syntax of this tool.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Kerburte%20Help%20Command.png"alt="Kerburte Help Command"/>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/UserEnumeration%20Flag.png"alt="UserEnumeration Flag/">
+                    <p> Question 2 </p>
+                        <blockquote class="Question">
+                            <p>What notable account is discovered?</p>
+                            <cite>Answer: svc-admin</cite>
+                        </blockquote>
+                        <p> First you need to add the IP to your /etc/hosts file. I used sublime, but use whatever text editor you want to. Then run the command below and the information should "jump out at you" lol. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Adding%20To%20Hosts.png"alt="Adding To Hosts"/>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Using%20Kerbrute.png"alt="Using Kerbrute"/>
+                    <p> Question 3 </p>
+                        <blockquote class="Question">
+                            <p> What is the other notable account is discovered? (These should jump out at you) </p>
+                            <cite>Answer: backup </cite>
+                        </blockquote>
+                        <p> Using the output from the screenshot above the second most notable account is the backup account. </p>
+                <h1 id="Task 5">Task 5 </h1>
+                    <p> Question 1 </p>
+                        <blockquote class="Question">
+                            <p>We have two user accounts that we could potentially query a ticket from. Which user account can you query a ticket from with no password? </p>
+                            <cite>Answer: svc-admin</cite>
+                        </blockquote>
+                        <p>  First in the <code class="text">attacktive-directory-tools </code>I unzipped <code class="text">impacket-master.zip</code> with the command unzip <code class="text">impacket-master.zip</code> and then went into that newly created directory running the command <code class="text">pip3 install -r requirements.txt</code>, so that could begin working with the tool. </p>
+                        <p>First I downloaded Impacket from <a href="https://github.com/SecureAuthCorp/impacket" target="Go to the repo"> GitHub</a> because the one that is provided by the creator doesn't have the GetNPUsers.py file in it. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Installing%20Impacket.png"alt="Installing Impacket"/>
+                        <p> Then after that, I used the tool against the users from the previous scan and found that the user svc-admin was the vulnerable name.  </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/GetNPUusers%20Output.png"alt="GetNPUusers Output"/>
+                    <p> Question 2 </p>
+                        <blockquote class="Question">
+                            <p>Looking at the Hashcat Examples Wiki page, what type of Kerberos hash did we retrieve from the KDC? (Specify the full name)</p>
+                            <cite>Answer: Kerberos 5, etype 23, AS-REP</cite>
+                        </blockquote>
+                        <p> After doing some googling around I found this <a href="https://www.tarlogic.com/blog/how-to-attack-kerberos/" target="Go to the repo"> article</a> talking about attacking Kerberos and their hashed output looked like the screenshot before.  </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Hashcat%20Attacking.png"alt="Hashcat Attacking"/>
+                    <p> Question 3 </p>
+                        <blockquote class="Question">
+                            <p>What mode is the hash?</p>
+                            <cite>Answer: 18200 </cite>
+                        </blockquote>
+                        <p> From the same article mentioned previously I took that hash type and put it in as the answer. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Hashcat%20Attacking.png"alt="Hashcat Attacking"/>
+                    <p> Question 4 </p>
+                        <blockquote class="Question">
+                            <p>Now crack the hash with the modified password list provided, what is the user accounts password?</p>
+                            <cite>Answer:  m****************</cite>
+                        </blockquote>
+                        <p> I saved the GetNPUsers.py output and saved it to a file called hash like the screenshot below.</p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/hashed%20file.png"alt="hashed file"/>
+                        <p> Then I used hashcat with the command below to get the users password. </p>
+                        <pre><code>➜ hashcat -m 18200 --force -a 0 hash  passwordlist.txt</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Output%20of%20Hashcat.png"alt="Output of Hashcat"/>
+                <h1 id="Task 6">Task 6 </h1>
+                    <p> Question 1 </p>
+                        <blockquote class="Question">
+                            <p>What utility can we use to map remote SMB shares?</p>
+                            <cite>Answer: smbclient</cite>
+                        </blockquote>
+                    <p> Question 2 </p>
+                        <blockquote class="Question">
+                            <p>Which option will list shares?</p>
+                            <cite>Answer: -L</cite>
+                        </blockquote>
+                    <p> Question 3 </p>
+                        <blockquote class="Question">
+                            <p>How many remote shares is the server listing?</p>
+                            <cite>Answer: 6</cite>
+                        </blockquote>
+                        <p> Using smbclient I entered the command below to see that there were 6 remote shares. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/SMBclient.png"alt="SMBclient"/>
+                    <p> Question 4 </p>
+                        <blockquote class="Question">
+                            <p>There is one particular share that we have access to that contains a text file. Which share is it?</p>
+                            <cite>Answer: backup</cite>
+                        </blockquote>
+                        <p> Using smbclient I listed out the contents of the backup share to find the text file that was needed for this question.  </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Logged%20Into%20SMB.png"alt="Logged Into SMB"/>
+                    <p> Question 5 </p>
+                        <blockquote class="Question">
+                            <p>What is the content of the file?</p>
+                            <cite>Answer:  Y********************</cite>
+                        </blockquote>
+                        <p>  Y******************** </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Reading%20Credentials%20File.png"alt="Reading Credentials File "/>
+                    <p> Question 6 </p>
+                        <blockquote class="Question">
+                            <p>Decoding the contents of the file, what is the full contents?</p>
+                            <cite>Answer:  b*****************</cite>
+                        </blockquote>
+                        <p> First instinct was to see if this was base64 because its just a common "hashing" mechanism used in challenges, and it worked.  </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Base64%20Decoded.png"alt="Base64 Decoded"/>
+                <h1 id="Task 7">Task 7 </h1>
+                    <p> Question 1 </p>
+                        <blockquote class="Question">
+                            <p> What method allowed us to dump NTDS.DIT? </p>
+                            <cite>Answer: DRSUAPI</cite>
+                        </blockquote>
+                        <p> Running the secretsdump.py command and looking at the output it tells us that DRUSAPI is the method being used to dump NTDS.DIT.  </p>
+                        <pre><code>➜ python3 secretsdump.py -dc-ip 10.10.247.166 spookysec.local/backup:backup2517860@10.10.247.166</code></pre>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/NTDS.DIT.png"alt="NTDS.DIT"/>
+                    <p> Question 2 </p>
+                        <blockquote class="Question">
+                            <p>What is the Administrators NTLM hash?</p>
+                            <cite>Answer:  aa***********</cite>
+                        </blockquote>
+                        <p> Using the secretsdump.py module in impacket the Administrators NTLM hash is revealed. </p>
+                        <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/NTLM%20Hashes%20Dumped.png"alt="NTLM Hashes Dumped"/>
+                    <p> Question 3 </p>
+                        <blockquote class="Question">
+                            <p> What method of attack could allow us to authenticate as the user without the password?</p>
+                            <cite>Answer: pass the hash</cite>
+                        </blockquote>
+                    <p> Question 4 </p>
+                        <blockquote class="Question">
+                            <p>Using a tool called Evil-WinRM what option will allow us to use a hash? </p>
+                            <cite>Answer: -h </cite>
+                        </blockquote>
+                <h1 id="Task 8">Task 8 </h1>
+                        <p> Question 1 </p>
+                            <blockquote class="Question">
+                                <p>svc-admin</p>
+                                <cite>Answer: TryHackMe{**}</cite>
+                            </blockquote>
+                            <p> Taking the hashes dumped from the secretsdump.py command I used svc-admin's hash to pass the hash and login as that user.  </p>
+                            <pre><code>➜ ruby evil-winrm.rb -i 10.10.113.156 -u Administrator -H 0e0363213e37b94221497260b0bcb4fc</code></pre>
+                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Win-RM%20Shell%20Achieved.png"alt="Win-RM Shell Achieved"/>
+                            <p>Using the Administrator's hash I logged onto their PC to start getting the flags for this challenge. For svc-admin I went into their Desktop directory to get the flag. </p>
+                            <img src="" alt="Flag Found"/>
+                        <p> Question 2 </p>
+                            <blockquote class="Question">
+                                <p>backup</p>
+                                <cite>Answer: TryHackMe{**}</cite>
+                            </blockquote>
+                            <p>To get the backup flag I just moved into their Desktop directory to find it.  </p>
+                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Flag%20Found.png"alt="Second Flag"/>
+                        <p> Question 3 </p>
+                            <blockquote class="Question">
+                                <p>Administrator</p>
+                                <cite>Answer: TryHackMe{**}</cite>
+                            </blockquote>
+                            <p> Like the previous two users I went to their Desktop folder to get the flag and finish this box off.  </p>
+                            <img src="https://raw.githubusercontent.com/JomariGee/jomarigee.github.io/main/Images/Images/TryHackMe/Attacktive-Directory/Third%20Flag.png"alt="Third Flag"/>
             </div>
 
             <!-- End of Article -->
@@ -743,7 +894,7 @@
                 <div class="Congrats">
                     <div class="UpperHR">
                         <h1 id="Finished"> Finished </h1>
-                        <p>This was a good Windows-style box. I was thrown off at first going down a rabbit hole with SMB being on this machine, and thinking that's what I needed to exploit, which it wasn't. Then once I pivoted to the OScommerece RCE things were pretty straightforward. It was also nice to read the other writeups out there and see how they attacked this box.   ☺ </p>
+                        <p>  This was such an AWESOME box to do. I had fun learning so much about Windows and using tools such as impacket and evil-winrm because I hadn't touched them before at all. Can't wait to keep on toughing up my Windows skills! ☺ </p>
                         <img src="https://i.gifer.com/150L.gif" alt="Happy Gif"/>
                         <hr>
                     </div>
@@ -751,16 +902,16 @@
 
                 <!-- New Article Selection -->
                 <div class="new_article">
-                    <a class="previous" href="/TryHackMe/Attacktive-Directory.html" style="background-image: url(https://images.unsplash.com/photo-1516617539902-51315fafbaa7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80)" alt="Article Selection">
+                    <a class="previous" href="/TryHackMe/Blue.html" style="background-image: url(https://images.unsplash.com/photo-1588421357574-87938a86fa28?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80)" alt="Article Selection">
                         <div class="new">
                             <div class="navigation navigation__previous">< Prior Page</div>
-                                <h4 class="next_article">TryHackMe Attacktive Directory</h4>
+                                <h4 class="next_article">TryHackMe Blue</h4>
                         </div>
                     </a>
-                    <a class="next" href="/TryHackMe/Blue.html" style="background-image: url(https://images.unsplash.com/photo-1588421357574-87938a86fa28?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80)" alt="Article Selection">
+                    <a class="next" href="/TryHackMe/Blueprint.html" style="background-image: url(https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ymx1ZXByaW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60)" alt="Article Selection">
                         <div class="new">
                             <div class="navigation navigation__next">Next Page > </div>
-                                <h4 class="next_article">TryHackMe Blue</h4>
+                                <h4 class="next_article">TryHackMe Blueprint</h4>
                         </div>
                     </a>
                 </div>
