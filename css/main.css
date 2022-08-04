@@ -1,0 +1,844 @@
+/*
+  _____       _ _                    _   _        ___  
+ |_   _|     (_) |                  | | | |      |__ \ 
+   | |  ___   _| |_   _ __  _ __ ___| |_| |_ _   _  ) |
+   | | / __| | | __| | '_ \| '__/ _ \ __| __| | | |/ / 
+  _| |_\__ \ | | |_  | |_) | | |  __/ |_| |_| |_| |_|  
+ |_____|___/ |_|\__| | .__/|_|  \___|\__|\__|\__, (_)  
+                     | |                      __/ |    
+                     |_|                     |___/     
+*/
+
+/*Home*/
+    .home-message h1{
+        color: #fefefe;
+        font-family: "Fredoka One";
+        font-size: 10vw;
+        text-align:center;
+        margin-top: 200px;
+    }
+    .home-message p{
+        color: #fefefe;
+        font-family: "Fredoka One";
+        font-size: 5vw;
+        margin-left: 2vw;
+        text-align:center;
+        display:inline-block;
+    }
+    .home-message .opening-message{
+        text-align: center;
+    }
+    .home-message .white-text {
+        color: #fefefe;
+    }   
+    .home-message .gray-text {
+        color:#302f2f;
+    }
+        .home-message .gray-text:hover {
+            color: #fefefe;
+            transform: scale(1.30);
+        }
+
+/*Writeups*/
+    .writeup-section h1{
+        color: #fefefe;
+        font-family: "Fredoka One";
+        font-size: 12.3vw;
+        text-align: center;
+        margin-bottom: 1vw;
+        margin-top: 1vw;
+    }
+    /* Card*/
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .banner-img {
+        position: absolute;
+        object-fit: cover;
+        height: 14rem;
+        width: 100%;
+    } 
+    .writeup-hashtag {
+        color: #d8d4d3;
+        font-family: "Fredoka One";
+        font-size: 0.9rem;
+        display: inline-block;
+        background-color: #131315;
+        border-radius: 3px;
+        border: none;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 50px;
+    } 
+    .writeup-title {
+        color:#d8d4d3;
+        font-family: "Fredoka One";
+        line-height: 1.5rem;
+        margin: 1rem 0 0.5rem;
+        text-align: center;
+    }
+    .writeup-description {
+        font-size: 0.9rem;
+    }
+    .card-link{
+        text-decoration: none;
+    }
+    .card {
+        overflow: hidden;
+        box-shadow: 0px 2px 20px #30383d;
+        background: #34344a;
+        position: relative;
+        width: 350px;
+        margin: 1rem;
+        transition: 250ms all ease-in-out;
+        cursor: pointer;
+        border-radius: 25px 15%;
+    }
+    .card:hover {
+        transform: scale(1.10);
+        box-shadow: 0px 9px 90px #292f33;
+    }
+    .card-body {
+        margin: 15rem 1rem 1rem 1rem;
+    }
+    .card-profile {
+        display: flex;
+        margin-top: 2rem;
+        align-items: center;
+    }
+    .platform-circle {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65px;
+        object-fit: cover;
+        border-radius: 50%;
+        align-items: center;
+        background-color: #131315;
+    }
+    .card-profile-info {
+        margin-left: 1rem;
+    }
+    /*Tags*/
+        .category-tag {
+            font-size: 0.8rem;
+            font-family: "Fredoka One";
+            color: white;
+            background: #464f54;
+            padding: 0.5rem 1.3rem 0.5rem 1rem;
+            position: absolute;
+            z-index: 1;
+            top: 1rem;
+            border-radius: 0 2rem 2rem 0;
+        }
+        .web-app {
+            background: #64289f;
+        }
+        .linux{
+            background: #289f5c;
+        }
+        .windows {
+            background: #28669f;
+        }
+        .portswigger{
+            background: #e8781d;
+        }
+        .python {
+            background: #0687d8;
+        }
+        .bash {
+            background: #289f5c;
+        }
+
+/*Coding*/
+    .coding-section h1{
+        color: #fefefe;
+        font-family: "Fredoka One";
+        font-size: 12.3vw;
+        text-align: center;
+        margin-bottom: 1vw;
+        margin-top: 1vw; 
+    }
+    .coding-body {
+        margin: 15rem 1rem 1rem 1rem;
+    }
+    .coding-description {
+        color: #d8d4d3;
+        font-family: "Fredoka One";
+        padding-left: 22px ;
+        margin-bottom: -15px;
+    }
+    .coding-title {
+        color:#fefefe;
+        font-family: "Fredoka One";
+        line-height: 1.5rem;
+        padding-left: 22px ;
+        margin: 1rem 0 0.5rem;
+    }
+    .coding-profile{
+        display: flex;
+        margin-top: 2rem;
+        align-items: center;
+    }
+    .coding-circle{
+        padding-left: -3px ;
+        width: 65px;
+        border-radius: 50%;
+        background-color: #131315;
+    }
+/*Content#34344a*/
+    .content-section{
+        color: #fefefe;
+        font-family: "Fredoka One";
+    }
+    .content-section h1{
+        font-size: 10.3vw;
+        text-align: center;
+        margin-bottom: 1vw;
+        margin-top: 100px;
+    }
+    .content-section p{
+        font-size: 4vw;
+        margin-top: 3vw; 
+        text-align:center;
+        width: 70vw;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 10px;
+        background-color: #34344a;
+        overflow: hidden;
+        box-shadow: 0px 2px 10px #495155;
+    }
+    .content-section img {
+        width: 6vw;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left:  20vw;
+        overflow: hidden;
+        box-shadow: 0px 2px 10px #30383d;
+    }
+        .content-section img:hover {
+            transform: scale(1.10);
+            box-shadow: 0px 9px 90px #292f33;
+        }
+        .instagram{
+            background-color: #0a000f;
+            margin-left: 5vw;
+        }
+
+/*Whoami*/
+    .whoami-section h1{
+        font-family: "Fredoka One";
+        color: white;
+        font-size: 10.3vw;
+        text-align: center;
+        margin-bottom: 1vw;
+        margin-top: 1.1vw;
+    }
+    .about-me-message p{
+        font-family: "Fredoka One";
+        color: white;
+        font-size: 3vw;
+        margin-right: 10vw;
+        margin-left: 12vw;
+        margin-top: 2vw;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #34344a;
+        overflow: hidden;
+        box-shadow: 0px 2px 10px #495155;
+    }
+    .whoami-section img{
+        max-width: 100%;
+        border-radius: 50%;
+        display: inline-block;
+        overflow: hidden;
+        box-shadow: 0px 2px 10px #30383d;
+    }
+        .social-picture{
+            width: 6vw;
+            justify-content: center;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .social-picture:hover {
+            transform: scale(1.10);
+            box-shadow: 0px 9px 90px #292f33;
+        }
+        .my-picture {
+            width: 13vw;
+            margin: 0;
+            position:relative;
+            top: 2vw;
+            left: 45vw;
+            justify-content: center;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1vw;
+        }
+        .twitter{
+            margin-left: 30vw;
+        }
+        .coffee{
+            width: 6vw;
+            margin-left: 30vw;
+        }
+    .whoami-section footer{
+        font-family: "Fredoka One";
+        color: white;
+        font-size: 20px;
+        border-radius: 5px;
+        background-color: #34344a;
+        text-align: center;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+/*Page Orientation*/
+    body,html {
+        height: 100%;
+        margin:0;
+    }
+
+/*Background Animations*/
+    .bg {
+        filter: blur(8px);
+        animation:slide 2.7s ease-in-out infinite alternate;
+        background-image: linear-gradient(-55deg, #648de5 50%, #79addc 50%);
+        bottom:0;
+        left:-50%;
+        opacity:.5;
+        position:fixed;
+        right:-50%;
+        top:0;
+        z-index:-1;
+    }
+    @keyframes slide {
+        0% {
+            transform:translateX(-25%);
+        }
+        100% {
+            transform:translateX(25%);
+        }
+    }
+    /*Home*/
+        .bg2-home {
+            animation-direction:alternate-reverse;
+            animation-duration:4s;
+        }
+        .bg3-home {
+            animation-duration:5s;
+        }
+    /* Writeups*/
+        .bg2-writeups  {
+            animation-direction:alternate-reverse;
+            animation-duration:4s;  
+        }
+        .bg3-writeups {
+            animation-duration:6s;
+        }
+        .bg4-writeups {
+            animation-duration:7s;
+        }
+        .bg5-writeups {
+            animation-direction:alternate-reverse;
+            animation-duration:6s;  
+        }
+    /*Coding*/
+        .bg2-coding {
+            animation-direction:alternate-reverse;
+            animation-duration:4s;
+        }
+        .bg3-coding {
+            animation-duration:5s;
+        }
+        .bg4-coding {
+            animation-direction:alternate;
+            animation-duration:4s;
+        }
+        .bg5-coding {
+            animation-duration:4s;
+        }
+        .bg6-coding {
+            animation-direction:alternate;
+            animation-duration:8s;
+        }
+        .bg7-coding {
+            animation-duration:7s;
+        }
+    /*Content*/
+        .bg2-content {
+            animation-direction:alternate;
+            animation-duration:3s;
+        }
+        .bg3-content {
+            animation-duration:6s;
+        }
+        .bg4-content {
+            animation-direction:reverse;
+            animation-duration:4s;
+        }
+        .bg5-content {
+            animation-duration:3s;
+        }        
+        .bg6-content {
+            animation-direction:initial;
+            animation-duration:3s;
+        }
+        .bg7-content {
+            animation-duration:5s;
+        }        
+        .bg8-content {
+            animation-direction:alternate-reverse;
+            animation-duration:3s;
+        }
+        .bg9-content {
+            animation-duration:8s;
+        }
+    /*Whoami*/
+        .bg2-whoami {
+            animation-direction:alternate-reverse;
+            animation-duration:3s;
+        }
+        .bg3-whoami {
+            animation-duration:6s;
+        }
+        .bg4-whoami {
+            animation-direction:alternate-reverse;
+            animation-duration:9s;
+        }
+
+/*Navigation Bar */
+    nav {
+        height: 6rem;
+        width: 100%;
+        background-color: #34344a;
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        position: relative;
+        z-index: 10;
+    }
+    .nav-links{
+        display: flex;
+        list-style: none; 
+        width: 88vw;
+        padding: 0 0.7vw;
+        justify-content: space-evenly;
+        align-items: center;
+        text-transform: uppercase;
+    }
+    .nav-links li a{
+        color: #f2f5f7;
+        font-family: "Fredoka One";
+        font-size: 25px;
+        text-decoration: none;
+        margin: 0 0.7vw;
+        overflow: hidden;
+        background: linear-gradient(to right, #292f33, #292f33 50%, #0e0e0f 50%);
+        transition: background-position 275ms ease;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: none;
+        background-size: 200% 100%;
+        background-position: 100%;
+    }
+    .nav-links li a:hover {
+        color: #292f33;
+        background-position: 0 100%;
+    }
+    .nav-links li {
+        position: relative;
+    }
+    .nav-links li a::before {
+        content: "";
+        display: block;
+        width: 0%;
+        background-color: #292f33;
+        position: absolute;         
+    }
+    .nav-links li a:hover::before{
+        width: 80%;
+    }
+    /* JS Hamburger Icon*/
+        .hamburger div{
+            width: 30px;
+            height:3px;
+            background: #f2f5f7;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .hamburger{
+            display: none;
+        }
+    /* Responsive Menu*/
+        @media screen and (max-width: 800px){
+            nav{
+                position: sticky;
+                z-index: 3;
+            }
+            .hamburger{
+                display:block;
+                position: absolute;
+                cursor: pointer;
+                right: 5%;
+                top: 50%;
+                transform: translate(-5%, -50%);
+                z-index: 2;
+                transition: all 0.7s ease;
+            }
+            .nav-links{
+                position: fixed;
+                background: #34344a;
+                height: 100vh;
+                width: 100%;
+                flex-direction: column;
+                clip-path: circle(50px at 90% -20%);
+                -webkit-clip-path: circle(50px at 90% -10%);
+                transition: all 1s ease-out;
+                pointer-events: none;
+            }
+            .nav-links.open{
+                clip-path: circle(1000px at 90% -10%);
+                -webkit-clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+            .nav-links li{
+                opacity: 0;
+            }
+            .nav-links li:nth-child(1){
+                transition: all 0.5s ease 0.2s;
+            }
+            .nav-links li:nth-child(2){
+                transition: all 0.5s ease 0.4s;
+            }
+            .nav-links li:nth-child(3){
+                transition: all 0.5s ease 0.6s;
+            }
+            .nav-links li:nth-child(4){
+                transition: all 0.5s ease 0.7s;
+            }
+            .nav-links li:nth-child(5){
+                transition: all 0.5s ease 0.8s;
+            }
+            .nav-links li:nth-child(6){
+                transition: all 0.5s ease 0.9s;
+                margin: 0;
+            }
+            .nav-links li:nth-child(7){
+                transition: all 0.5s ease 1s;
+                margin: 0;
+            }
+            li.fade{
+                opacity: 1;
+            }
+        }
+    /* Hamburger Animation*/
+        .toggle .line1{
+            transform: rotate(-45deg) translate(-5px,6px);
+        }
+        .toggle .line2{
+            transition: all 0.7s ease;
+            width:0;
+        }
+        .toggle .line3{
+            transform: rotate(45deg) translate(-5px,-6px);
+        }  
+/* Navigation Arrows*/
+    .contain {
+        width: 4000px;
+        height: 59px;
+        left: 5px;
+        top: 8px;
+        margin-top: 14px;
+        margin-bottom: 1vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .arrow {
+        position: relative;
+        display: inline-block;
+        width: 55px;
+        height: 59px;
+        object-fit: contain;
+        cursor: pointer;
+        transition: all 200ms cubic-bezier(0.33, 1, 0.68, 1) ;
+    }
+    .right-arrow{
+        margin-left: 100px;
+    }
+    .arrow.last.out {
+        opacity: 0;
+        transform: scale(0);
+    }
+    .arrow .arrow_rectangle {
+        position: absolute;
+        width: 45px;
+        height: 45px;
+    }
+    .arrow .arrow_rectangle .fp{
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        border-radius: 22.5px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        transition: all 300ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    .arrow:hover .arrow_rectangle .fp {
+        transform: scale(1.2);
+        background-color:#131315;
+    }
+    .arrow:active .arrow_rectangle .fp{
+        transform: scale(0.9);
+    }
+    .arrow:nth-child(1) .arrow_rectangle .path_contain {
+        position: absolute;
+        top: 21px;
+        left: 17px;
+    }
+    .arrow:nth-child(2) .arrow_rectangle .path_contain {
+        position: absolute;
+        top: 21px;
+        left: 16px;
+    }
+    .arrow .arrow_rectangle .path_contain .path {
+        position: absolute;
+        width: 12px;
+        height: 3px;
+        border-radius: 3px;
+        transform: rotate(-45deg);
+        /* background-color: #1d2027; */
+    }
+    .arrow .arrow_rectangle .path_contain .path:nth-child(1) {
+        top: 1px;
+    }
+    .arrow .arrow_rectangle .path_contain .path:nth-child(2) {
+        top: -1px;
+    }
+    .arrow:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(1) {
+        transform-origin: left;
+        transform: rotate(-45deg);
+    }
+    .arrow:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(2) {
+        transform-origin: left;
+        transform: rotate(45deg);
+    }
+    .arrow:nth-child(2) .arrow_rectangle .path_contain .path:nth-child(1) {
+        transform-origin: right;
+        transform: rotate(45deg);
+    }
+    .arrow:nth-child(2) .arrow_rectangle .path_contain .path:nth-child(2) {
+        transform-origin: right;
+        transform: rotate(-45deg);
+    }
+    .arrow:hover:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(1) {
+        -webkit-animation: arrowActive-hover-left-line-1 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+    } 
+    .arrow:hover:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(2) {
+        -webkit-animation: arrowActive-hover-left-line-2 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+        background: #131315;
+    }
+    @-webkit-keyframes arrowActive-hover-left-line-1 {
+    0% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(-30deg) translateY(-0.5px);
+    }
+
+    100% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+    }
+    @-webkit-keyframes arrowActive-hover-left-line-2 {
+    0% {
+        transform: rotate(45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(30deg) translateY(0.5px);
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(0px);
+    }
+    }
+    .arrow:hover:nth-child(2) .arrow_rectangle .path_contain .path:nth-child(1) {
+        -webkit-animation: arrowActive-hover-right-line-1 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+        background-color: #131315;
+    }
+    .arrow:hover:nth-child(2) .arrow_rectangle .path_contain .path:nth-child(2) {
+        -webkit-animation: arrowActive-hover-right-line-2 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+        background-color: #131315;
+    }
+    @-webkit-keyframes arrowActive-hover-right-line-1 {
+    0% {
+        transform: rotate(45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(30deg) translateY(-0.5px);
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(0px);
+    }
+    }
+    @-webkit-keyframes arrowActive-hover-right-line-2 {
+    0% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(-30deg) translateY(0.5px);
+    }
+
+    100% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+    }
+    .arrow.active:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(1) {
+        -webkit-animation: arrowActive-active-left-line-1 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+    }
+    .arrow.active:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(2) {
+        -webkit-animation: arrowActive-active-left-line-2 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes arrowActive-active-left-line-1 {
+    0% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(-20deg) translateY(-0.5px);
+    }
+
+    100% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+    }
+    @-webkit-keyframes arrowActive-active-left-line-2 {
+    0% {
+        transform: rotate(45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(20deg) translateY(0.5px);
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(0px);
+    }
+    }
+    .arrow.active:nth-child(2) .arrow_rectangle .path_contain .path:nth-child(1) {
+        -webkit-animation: arrowActive-active-right-line-1 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+    }
+    .arrow.active:nth-child(2) .arrow_rectangle .path_contain .path:nth-child(2) {
+        -webkit-animation: arrowActive-active-right-line-2 300ms ease-in-out alternate;
+        animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes arrowActive-active-right-line-1 {
+    0% {
+        transform: rotate(45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(20deg) translateY(-0.5px);
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(0px);
+    }
+    }
+    @-webkit-keyframes arrowActive-active-right-line-2 {
+    0% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+
+    40% {
+        transform: rotate(-20deg) translateY(0.5px);
+    }
+
+    100% {
+        transform: rotate(-45deg) translateY(0px);
+    }
+    }
+
+/*Responsive Elements*/
+    @media screen and (max-width: 800px) {
+        /*Home*/
+            .home-message h1 {
+                font-size: 15vw;
+                margin-left: 0.5vw;
+            }
+            .home-message p {
+                font-size: 10vw;
+                margin-left: 0.5vw;
+            }
+        /*Writeups*/
+            .writeup-section h1{
+                font-size: 15vw;
+                margin-top: 50px;
+            }
+        /*Coding*/
+        /*Content*/
+        .content-section h1{
+            font-size: 15vw;
+            margin-top: 160px;
+        }
+        .content-section p {
+            font-size: 7vw;
+            width: 95vw;
+            margin-top: 100px; 
+        }
+        .content-section img {
+            width: 15vw;
+            margin-top: 6vw;
+            margin-left: 15vw;
+        }
+        .instagram{
+            margin-left: 7vw;
+        }
+        /*Whoami*/            
+            .whoami-section h1{
+                font-size: 15vw;
+                margin-top: 6vw;
+            }
+            .about-me-message p{
+                font-size: 7vw;
+                margin-top: 6vw;
+            }
+            .my-picture{
+                width: 30vw;
+                left: 35vw;
+            }
+            .social-picture{
+                width: 70px;
+                margin-top: 10vw;
+                margin-left: 23vw;
+            }
+            .whoami-section footer{
+                font-size: 20px;
+            }
+    }
+
+/**********************************************************************
+  CSS not written by me came from these lovely people (Not everyone)
+
+    Background-Animation - https://codepen.io/chris22smith/pen/RZogMa
+    Cards - https://codepen.io/angeladelise/pen/Bajdvav
+    Left & Right Arrows - https://codepen.io/rstudio/pen/qBNadWN
+***********************************************************************/
