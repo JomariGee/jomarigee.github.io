@@ -1,12 +1,12 @@
 /*
-  _____       _ _                    _   _        ___  
- |_   _|     (_) |                  | | | |      |__ \ 
+  _____       _ _                    _   _        ___
+ |_   _|     (_) |                  | | | |      |__ \
    | |  ___   _| |_   _ __  _ __ ___| |_| |_ _   _  ) |
-   | | / __| | | __| | '_ \| '__/ _ \ __| __| | | |/ / 
-  _| |_\__ \ | | |_  | |_) | | |  __/ |_| |_| |_| |_|  
- |_____|___/ |_|\__| | .__/|_|  \___|\__|\__|\__, (_)  
-                     | |                      __/ |    
-                     |_|                     |___/     
+   | | / __| | | __| | '_ \| '__/ _ \ __| __| | | |/ /
+  _| |_\__ \ | | |_  | |_) | | |  __/ |_| |_| |_| |_|
+ |_____|___/ |_|\__| | .__/|_|  \___|\__|\__|\__, (_)
+                     | |                      __/ |
+                     |_|                     |___/
 */
 
 /*Home*/
@@ -25,12 +25,21 @@
         text-align:center;
         display:inline-block;
     }
+    .home-message a{
+        color: #fefefe;
+        font-family: "Fredoka One";
+        font-size: 5vw;
+        margin-left: 2vw;
+        text-align:center;
+        display:inline-block;
+        text-decoration: none;
+    }
     .home-message .opening-message{
         text-align: center;
     }
     .home-message .white-text {
         color: #fefefe;
-    }   
+    }
     .home-message .gray-text {
         color:#302f2f;
     }
@@ -59,7 +68,7 @@
         object-fit: cover;
         height: 14rem;
         width: 100%;
-    } 
+    }
     .writeup-hashtag {
         color: #d8d4d3;
         font-family: "Fredoka One";
@@ -71,7 +80,7 @@
         text-align: center;
         margin-top: 20px;
         margin-left: 50px;
-    } 
+    }
     .writeup-title {
         color:#d8d4d3;
         font-family: "Fredoka One";
@@ -159,7 +168,7 @@
         font-size: 12.3vw;
         text-align: center;
         margin-bottom: 1vw;
-        margin-top: 1vw; 
+        margin-top: 1vw;
     }
     .coding-body {
         margin: 15rem 1rem 1rem 1rem;
@@ -201,7 +210,7 @@
     }
     .content-section p{
         font-size: 4vw;
-        margin-top: 3vw; 
+        margin-top: 3vw;
         text-align:center;
         width: 70vw;
         margin-right: auto;
@@ -338,7 +347,7 @@
     /* Writeups*/
         .bg2-writeups  {
             animation-direction:alternate-reverse;
-            animation-duration:4s;  
+            animation-duration:4s;
         }
         .bg3-writeups {
             animation-duration:6s;
@@ -348,7 +357,7 @@
         }
         .bg5-writeups {
             animation-direction:alternate-reverse;
-            animation-duration:6s;  
+            animation-duration:6s;
         }
     /*Coding*/
         .bg2-coding {
@@ -386,14 +395,14 @@
         }
         .bg5-content {
             animation-duration:3s;
-        }        
+        }
         .bg6-content {
             animation-direction:initial;
             animation-duration:3s;
         }
         .bg7-content {
             animation-duration:5s;
-        }        
+        }
         .bg8-content {
             animation-direction:alternate-reverse;
             animation-duration:3s;
@@ -426,7 +435,7 @@
     }
     .nav-links{
         display: flex;
-        list-style: none; 
+        list-style: none;
         width: 88vw;
         padding: 0 0.7vw;
         justify-content: space-evenly;
@@ -459,7 +468,7 @@
         display: block;
         width: 0%;
         background-color: #292f33;
-        position: absolute;         
+        position: absolute;
     }
     .nav-links li a:hover::before{
         width: 80%;
@@ -547,7 +556,7 @@
         }
         .toggle .line3{
             transform: rotate(45deg) translate(-5px,-6px);
-        }  
+        }
 /* Navigation Arrows*/
     .contain {
         width: 4000px;
@@ -640,7 +649,7 @@
     .arrow:hover:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(1) {
         -webkit-animation: arrowActive-hover-left-line-1 300ms ease-in-out alternate;
         animation-fill-mode: forwards;
-    } 
+    }
     .arrow:hover:nth-child(1) .arrow_rectangle .path_contain .path:nth-child(2) {
         -webkit-animation: arrowActive-hover-left-line-2 300ms ease-in-out alternate;
         animation-fill-mode: forwards;
@@ -802,7 +811,7 @@
         .content-section p {
             font-size: 7vw;
             width: 95vw;
-            margin-top: 100px; 
+            margin-top: 100px;
         }
         .content-section img {
             width: 15vw;
@@ -812,7 +821,7 @@
         .instagram{
             margin-left: 7vw;
         }
-        /*Whoami*/            
+        /*Whoami*/
             .whoami-section h1{
                 font-size: 15vw;
                 margin-top: 6vw;
