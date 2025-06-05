@@ -258,6 +258,8 @@
         background-color: #34344a;
         overflow: hidden;
         box-shadow: 0px 2px 10px #495155;
+
+        padding: 2vw; /* Adjust to taste (1vw, 2vw, etc.) */
     }
     .whoami-section img{
         max-width: 100%;
